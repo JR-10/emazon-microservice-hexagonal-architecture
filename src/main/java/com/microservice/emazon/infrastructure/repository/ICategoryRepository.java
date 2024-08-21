@@ -1,4 +1,4 @@
-package com.microservice.emazon.infrastructure.repositories;
+package com.microservice.emazon.infrastructure.repository;
 
 import com.microservice.emazon.infrastructure.entity.CategoryEntity;
 import org.springframework.data.domain.Page;

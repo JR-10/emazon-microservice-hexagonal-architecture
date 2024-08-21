@@ -5,7 +5,7 @@ import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.infrastructure.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
 import com.microservice.emazon.infrastructure.mapper.ICategoryEntityMapper;
-import com.microservice.emazon.infrastructure.repositories.ICategoryRepository;
+import com.microservice.emazon.infrastructure.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
