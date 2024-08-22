@@ -52,6 +52,6 @@ public class CategoryUseCase  implements ICategoryServicePort {
 
     @Override
     public void deleteCategory(Long id) {
-
+        // not necessary yet
     }
 }

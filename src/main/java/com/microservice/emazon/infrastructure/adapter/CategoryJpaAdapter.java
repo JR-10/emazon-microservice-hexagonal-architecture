@@ -72,6 +72,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
 
     @Override
     public void deleteCategory(Long id) {
-
+        // not necessary yet
     }
 }
