@@ -32,17 +32,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         return categoryEntityMapper.toCategoryList(categoryEntityList);
     }
 
-    @Override
-    public Page<Category> getCategories(String order, Pageable pageable) {
-        if (order.equalsIgnoreCase("asc")){
-            return mapCategoryEntityToCategory(categoryRepository.findAll(sortPageAscending(pageable)));
-        }
-        if (order.equalsIgnoreCase("desc")){
-            return mapCategoryEntityToCategory(categoryRepository.findAll(sortPageDescending(pageable)));
-        }
-        throw new CategoryException("metodo de ordenamiento invalido ingrese 'asc' o 'desc'");
-    }
-
     private Pageable sortPageDescending(Pageable pageable) {
         Sort sort = Sort.by("name").descending();
         return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);

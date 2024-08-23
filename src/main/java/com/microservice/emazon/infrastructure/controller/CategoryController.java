@@ -49,17 +49,6 @@ public class CategoryController {
     }
 
 
-    @Operation(summary = "Get a category by ordering")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Category found",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryResponseDto.class))),
-            @ApiResponse(responseCode = "404", description = "Category not found", content = @Content)
-    })
-    @GetMapping("/getCategories/{ordering}")
-    public ResponseEntity<List<CategoryResponseDto>> getCategories(@PathVariable String ordering, Pageable pageable){
-        return ResponseEntity.ok().body(categoryHandler.getCategories(ordering,pageable).getContent());
-    }
-
     // TODO: modificacion 1 llamado al handler
     @GetMapping("/getCategoriesByPagination/{order}")
     public ResponseEntity<List<CategoryResponseDto>> getPagination(

@@ -29,11 +29,6 @@ public class CategoryHandler implements ICategoryHandler {
         return categoryMapper.categoryListToCategoryDtoList(categoryServicePort.getAllCategories());
     }
 
-    @Override
-    public Page<CategoryResponseDto> getCategories(String order, Pageable pageable) {
-        return mapCategoryPageToCategoryDtoPage(categoryServicePort.getCategories(order, pageable));
-    }
-
     private Page<CategoryResponseDto> mapCategoryPageToCategoryDtoPage(Page<Category> categories) {
         return categories.map(categoryMapper::categoryToCategoryDto);
     }

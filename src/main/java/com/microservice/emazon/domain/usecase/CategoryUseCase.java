@@ -26,12 +26,6 @@ public class CategoryUseCase  implements ICategoryServicePort {
 
 
     @Override
-    public Page<Category> getCategories(String order, Pageable pageable) {
-        return categoryPersistencePort.getCategories(order,pageable);
-
-    }
-
-    @Override
     public Optional<Category> getCategory(Long id) {
         return Optional.empty();
     }

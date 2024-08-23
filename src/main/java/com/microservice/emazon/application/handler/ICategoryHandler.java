@@ -17,14 +17,6 @@ public interface ICategoryHandler {
     List<CategoryResponseDto> getAllCategories();
 
     /*
-     * Get categories
-     * @param order
-     * @param pageable
-     * @return Page<CategoryDto>
-     */
-    Page<CategoryResponseDto> getCategories(String order, Pageable pageable);
-
-    /*
      * Save a category
      * @param categoryDto
      */
