@@ -61,13 +61,13 @@ public class CategoryController {
     }
 
     // TODO: modificacion 1 llamado al handler
-    @GetMapping("/pagination/{order}")
+    @GetMapping("/getCategoriesByPagination/{order}")
     public ResponseEntity<List<CategoryResponseDto>> getPagination(
             @PathVariable String order,
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize,
             @RequestParam(defaultValue = "name") String sortBy
     )  {
-        return ResponseEntity.ok().body(categoryHandler.getPagination(pageNo, pageSize, sortBy, order));
+        return ResponseEntity.ok().body(categoryHandler.getCategoriesByPagination(pageNo, pageSize, sortBy, order));
     }
 }

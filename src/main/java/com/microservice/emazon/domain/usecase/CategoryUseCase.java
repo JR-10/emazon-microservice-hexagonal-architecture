@@ -56,8 +56,8 @@ public class CategoryUseCase  implements ICategoryServicePort {
 
     // TODO: modificacion 5 - Se agrega el metodo getPagination a la clase CategoryUseCase implementando la interfaz ICategoryServicePort
     @Override
-    public List<Category> getPagination(Pageable pageable) {
-        return categoryPersistencePort.getPagination(pageable);
+    public List<Category> getCategoriesByPagination(Pageable pageable) {
+        return categoryPersistencePort.getCategoriesByPagination(pageable);
     }
 
 }

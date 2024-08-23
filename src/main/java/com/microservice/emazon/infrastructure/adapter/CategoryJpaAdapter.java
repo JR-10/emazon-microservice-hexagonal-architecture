@@ -77,7 +77,7 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
 
     // TODO: modificacion 7 - Se agrega el metodo getPagination a la clase CategoryJpaAdapter implementado de la interfaz ICategoryPersistencePort
     @Override
-    public List<Category> getPagination(Pageable pageable) {
+    public List<Category> getCategoriesByPagination(Pageable pageable) {
         List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
         if (categoryEntityList.isEmpty()) {
             throw new CategoryException("No hay categorias creadas");
