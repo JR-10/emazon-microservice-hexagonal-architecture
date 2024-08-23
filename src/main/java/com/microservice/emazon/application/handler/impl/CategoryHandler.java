@@ -46,9 +46,10 @@ public class CategoryHandler implements ICategoryHandler {
 
     // TODO: modificacion 3 - Se agrega el metodo getPagination implementando la interfaz ICategoryHandler
     @Override
-    public List<CategoryResponseDto> getPagination(int pageNo, int pageSize) {
+    public List<CategoryResponseDto> getPagination(int pageNo, int pageSize, String sortBy, String order) {
 
-        Pageable pageRequest = PageRequest.of(pageNo, pageSize);
+        Sort sort = Sort.by(Sort.Direction.fromString(order), sortBy);
+        Pageable pageRequest = PageRequest.of(pageNo, pageSize, sort);
         List<CategoryResponseDto> paginationCategory;
         paginationCategory = categoryMapper.categoryListToCategoryDtoList(categoryServicePort.getPagination(pageRequest));
 

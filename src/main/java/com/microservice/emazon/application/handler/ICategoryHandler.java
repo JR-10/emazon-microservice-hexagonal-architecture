@@ -32,6 +32,6 @@ public interface ICategoryHandler {
 
     // TODO: modificacion 2 - Se agrega el metodo getPagination a la interfaz ICategoryHandler
     // como se quiere retornar la respuesta
-    List<CategoryResponseDto> getPagination(int pageNo, int pageSize);
+    List<CategoryResponseDto> getPagination(int pageNo, int pageSize, String sortBy, String order);
 
 }

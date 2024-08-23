@@ -27,7 +27,7 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     public List<Category> getAllCategories() {
         List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
         if (categoryEntityList.isEmpty()) {
-            throw new CategoryException("No hay categorias");
+            throw new CategoryException("No hay categorias creadas");
         }
         return categoryEntityMapper.toCategoryList(categoryEntityList);
     }
@@ -78,7 +78,10 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     // TODO: modificacion 7 - Se agrega el metodo getPagination a la clase CategoryJpaAdapter implementado de la interfaz ICategoryPersistencePort
     @Override
     public List<Category> getPagination(Pageable pageable) {
-        System.out.println("CategoryJpaAdapter.getPagination Page:" + pageable.getPageNumber() + " Size:" + pageable.getPageSize());
+        List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
+        if (categoryEntityList.isEmpty()) {
+            throw new CategoryException("No hay categorias creadas");
+        }
         return categoryEntityMapper.toCategoryList(categoryRepository.findAll(pageable).getContent());
     }
 
