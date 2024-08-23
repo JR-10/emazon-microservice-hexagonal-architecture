@@ -74,4 +74,12 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     public void deleteCategory(Long id) {
         // not necessary yet
     }
+
+    // TODO: modificacion 7 - Se agrega el metodo getPagination a la clase CategoryJpaAdapter implementado de la interfaz ICategoryPersistencePort
+    @Override
+    public List<Category> getPagination(Pageable pageable) {
+        System.out.println("CategoryJpaAdapter.getPagination Page:" + pageable.getPageNumber() + " Size:" + pageable.getPageSize());
+        return categoryEntityMapper.toCategoryList(categoryRepository.findAll(pageable).getContent());
+    }
+
 }

@@ -22,7 +22,6 @@ public class CategoryUseCase  implements ICategoryServicePort {
     @Override
     public List<Category> getAllCategories() {
         return categoryPersistencePort.getAllCategories();
-
     }
 
 
@@ -54,4 +53,11 @@ public class CategoryUseCase  implements ICategoryServicePort {
     public void deleteCategory(Long id) {
         // not necessary yet
     }
+
+    // TODO: modificacion 5 - Se agrega el metodo getPagination a la clase CategoryUseCase implementando la interfaz ICategoryServicePort
+    @Override
+    public List<Category> getPagination(Pageable pageable) {
+        return categoryPersistencePort.getPagination(pageable);
+    }
+
 }

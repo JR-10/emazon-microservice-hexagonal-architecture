@@ -59,4 +59,10 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponseDto>> getCategories(@PathVariable String ordering, Pageable pageable){
         return ResponseEntity.ok().body(categoryHandler.getCategories(ordering,pageable).getContent());
     }
+
+    // TODO: modificacion 1 llamado al handler
+    @GetMapping("/pagination")
+    public ResponseEntity<List<CategoryResponseDto>> getPagination(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "5") int pageSize)  {
+        return ResponseEntity.ok().body(categoryHandler.getPagination(pageNo, pageSize));
+    }
 }

@@ -29,4 +29,9 @@ public interface ICategoryHandler {
      * @param categoryDto
      */
     void saveCategory(CategoryRequestDto categoryRequestDto);
+
+    // TODO: modificacion 2 - Se agrega el metodo getPagination a la interfaz ICategoryHandler
+    // como se quiere retornar la respuesta
+    List<CategoryResponseDto> getPagination(int pageNo, int pageSize);
+
 }

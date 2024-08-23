@@ -18,4 +18,7 @@ public interface ICategoryPersistencePort {
     void saveCategory(Category category);
 
     void deleteCategory(Long id);
+
+    // TODO: modificacion 6 - Se agrega el metodo getPagination a la interfaz ICategoryPersistencePort
+    List<Category> getPagination(Pageable pageable);
 }
