@@ -8,9 +8,6 @@ import com.microservice.emazon.domain.api.ICategoryServicePort;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,17 +33,6 @@ public class CategoryHandler implements ICategoryHandler {
     }
 
     // TODO: modificacion 3 - Se agrega el metodo getPagination implementando la interfaz ICategoryHandler
-    @Override
-    public List<CategoryResponseDto> getCategoriesByPagination(int pageNo, int pageSize, String sortBy, String order) {
-
-        Sort sort = Sort.by(Sort.Direction.fromString(order), sortBy);
-        Pageable pageRequest = PageRequest.of(pageNo, pageSize, sort);
-        List<CategoryResponseDto> paginationCategory;
-        paginationCategory = categoryMapper.categoryListToCategoryDtoList(categoryServicePort.getCategoriesByPagination(pageRequest));
-
-        return paginationCategory;
-    }
-
     @Override
     public Pagination<CategoryResponseDto> getPagination(PaginationUtil paginationUtil) {
         return categoryMapper.paginationToDto(categoryServicePort.getPagination(paginationUtil));

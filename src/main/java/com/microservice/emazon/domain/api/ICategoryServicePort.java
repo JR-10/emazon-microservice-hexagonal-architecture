@@ -3,7 +3,6 @@ package com.microservice.emazon.domain.api;
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +22,6 @@ public interface ICategoryServicePort {
     void deleteCategory(Long id);
 
     // TODO: modificacion 4 - Se agrega el metodo getPagination a la interfaz ICategoryServicePort
-    List<Category> getCategoriesByPagination(Pageable pageable);
-
     Pagination<Category> getPagination(PaginationUtil paginationUtil);
 
 }

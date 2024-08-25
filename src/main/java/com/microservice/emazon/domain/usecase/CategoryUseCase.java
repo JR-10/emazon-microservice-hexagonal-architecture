@@ -6,7 +6,6 @@ import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,11 +49,6 @@ public class CategoryUseCase  implements ICategoryServicePort {
     }
 
     // TODO: modificacion 5 - Se agrega el metodo getPagination a la clase CategoryUseCase implementando la interfaz ICategoryServicePort
-    @Override
-    public List<Category> getCategoriesByPagination(Pageable pageable) {
-        return categoryPersistencePort.getCategoriesByPagination(pageable);
-    }
-
     @Override
     public Pagination<Category> getPagination(PaginationUtil paginationUtil) {
         return categoryPersistencePort.getPagination(paginationUtil);

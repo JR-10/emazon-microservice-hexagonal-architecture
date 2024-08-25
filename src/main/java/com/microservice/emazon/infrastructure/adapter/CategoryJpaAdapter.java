@@ -11,7 +11,6 @@ import com.microservice.emazon.infrastructure.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
@@ -53,15 +52,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     }
 
     // TODO: modificacion 7 - Se agrega el metodo getPagination a la clase CategoryJpaAdapter implementado de la interfaz ICategoryPersistencePort
-    @Override
-    public List<Category> getCategoriesByPagination(Pageable pageable) {
-        List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
-        if (categoryEntityList.isEmpty()) {
-            throw new CategoryException("No hay categorias creadas");
-        }
-        return categoryEntityMapper.toCategoryList(categoryRepository.findAll(pageable).getContent());
-    }
-
     @Override
     public Pagination<Category> getPagination(PaginationUtil paginationUtil) {
         Sort.Direction sortDirection = paginationUtil.isAscending()? Sort.Direction.ASC : Sort.Direction.DESC;

@@ -13,21 +13,22 @@ public interface ICategoryHandler {
 
     /*
      * Get all categories
-     * @return List<CategoryDto>
+     * @return List<CategoryResponseDto>
      */
     List<CategoryResponseDto> getAllCategories();
 
     /*
      * Save a category
-     * @param categoryDto
+     * @param CategoryResponseDto
      */
     void saveCategory(CategoryRequestDto categoryRequestDto);
 
     // TODO: modificacion 2 - Se agrega el metodo getPagination a la interfaz ICategoryHandler
-    // como se quiere retornar la respuesta
-    List<CategoryResponseDto> getCategoriesByPagination(int pageNo, int pageSize, String sortBy, String order);
-
-
+    /*
+     * Get categories by pagination
+     * @param paginationUtil
+     * @return Pagination<CategoryResponseDto>
+     */
     Pagination<CategoryResponseDto> getPagination(PaginationUtil paginationUtil);
 
 }
