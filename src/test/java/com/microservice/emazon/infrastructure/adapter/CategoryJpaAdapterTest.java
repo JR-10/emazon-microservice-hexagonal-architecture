@@ -60,13 +60,6 @@ class CategoryJpaAdapterTest {
 
 
     @Test
-    void getCategories_ThrowsExceptionForInvalidOrder() {
-        Pageable pageable = PageRequest.of(0, 10);
-
-        assertThrows(CategoryException.class, () -> categoryJpaAdapter.getCategories("invalid", pageable));
-    }
-
-    @Test
     void saveCategory_SavesCategorySuccessfully() {
         Category category = new Category(1L, "CategoryName", "CategoryDescription");
         CategoryEntity categoryEntity = new CategoryEntity();

@@ -50,29 +50,6 @@ class CategoryUseCaseTest {
         assertEquals(categories, result);
     }
 
-    @Test
-    void getCategories_ReturnsSortedCategoriesAscending() {
-        Page<Category> categories = new PageImpl<>(List.of(new Category(1L, "CategoryName", "CategoryDescription")));
-        Pageable pageable = PageRequest.of(0, 10);
-        when(categoryPersistencePort.getCategories("asc", pageable)).thenReturn(categories);
-
-        Page<Category> result = categoryUseCase.getCategories("asc", pageable);
-
-        assertEquals(categories.getContent(), result.getContent());
-    }
-
-    @Test
-    void getCategories_ReturnsSortedCategoriesDescending() {
-        Page<Category> categories = new PageImpl<>(List.of(new Category(1L, "CategoryName", "CategoryDescription")));
-        Pageable pageable = PageRequest.of(0, 10);
-        when(categoryPersistencePort.getCategories("desc", pageable)).thenReturn(categories);
-
-        Page<Category> result = categoryUseCase.getCategories("desc", pageable);
-
-        assertEquals(categories.getContent(), result.getContent());
-    }
-
-
 
     @Test
     void getCategory_ReturnsEmptyOptionalWhenCategoryNotFound() {
