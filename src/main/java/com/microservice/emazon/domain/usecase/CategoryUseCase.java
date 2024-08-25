@@ -2,9 +2,10 @@ package com.microservice.emazon.domain.usecase;
 
 import com.microservice.emazon.domain.api.ICategoryServicePort;
 import com.microservice.emazon.domain.model.Category;
+import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
+import com.microservice.emazon.domain.util.PaginationUtil;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -52,6 +53,11 @@ public class CategoryUseCase  implements ICategoryServicePort {
     @Override
     public List<Category> getCategoriesByPagination(Pageable pageable) {
         return categoryPersistencePort.getCategoriesByPagination(pageable);
+    }
+
+    @Override
+    public Pagination<Category> getPagination(PaginationUtil paginationUtil) {
+        return categoryPersistencePort.getPagination(paginationUtil);
     }
 
 }

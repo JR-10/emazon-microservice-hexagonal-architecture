@@ -2,8 +2,9 @@ package com.microservice.emazon.application.handler;
 
 import com.microservice.emazon.application.dto.CategoryRequestDto;
 import com.microservice.emazon.application.dto.CategoryResponseDto;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.microservice.emazon.domain.model.Pagination;
+import com.microservice.emazon.domain.util.PaginationUtil;
+
 
 import java.util.List;
 
@@ -25,5 +26,8 @@ public interface ICategoryHandler {
     // TODO: modificacion 2 - Se agrega el metodo getPagination a la interfaz ICategoryHandler
     // como se quiere retornar la respuesta
     List<CategoryResponseDto> getCategoriesByPagination(int pageNo, int pageSize, String sortBy, String order);
+
+
+    Pagination<CategoryResponseDto> getPagination(PaginationUtil paginationUtil);
 
 }

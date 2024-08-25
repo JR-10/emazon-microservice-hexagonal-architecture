@@ -1,7 +1,9 @@
 package com.microservice.emazon.infrastructure.adapter;
 
 import com.microservice.emazon.domain.model.Category;
+import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
+import com.microservice.emazon.domain.util.PaginationUtil;
 import com.microservice.emazon.infrastructure.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
 import com.microservice.emazon.infrastructure.mapper.ICategoryEntityMapper;
@@ -32,20 +34,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         return categoryEntityMapper.toCategoryList(categoryEntityList);
     }
 
-    private Pageable sortPageDescending(Pageable pageable) {
-        Sort sort = Sort.by("name").descending();
-        return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
-    }
-
-    private Pageable sortPageAscending(Pageable pageable) {
-        Sort sort = Sort.by("name").ascending();
-        return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
-    }
-
-    private Page<Category>mapCategoryEntityToCategory(Page<CategoryEntity> page){
-        return page.map(categoryEntityMapper::toCategory);
-    }
-
     @Override
     public Optional<Category> getCategory(Long id) {
         return Optional.empty();
@@ -74,4 +62,19 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         return categoryEntityMapper.toCategoryList(categoryRepository.findAll(pageable).getContent());
     }
 
+    @Override
+    public Pagination<Category> getPagination(PaginationUtil paginationUtil) {
+        Sort.Direction sortDirection = paginationUtil.isAscending()? Sort.Direction.ASC : Sort.Direction.DESC;
+        PageRequest pageRequest = PageRequest.of(paginationUtil.getPageNumber(), paginationUtil.getPageSize(), Sort.by(sortDirection, paginationUtil.getNameFilter()));
+        Page<CategoryEntity> categoryPage = categoryRepository.findAll(pageRequest);
+        List<Category> categories = categoryEntityMapper.toCategoryList(categoryPage.getContent());
+
+        return new Pagination<>(
+                paginationUtil.isAscending(),
+                paginationUtil.getPageNumber(),
+                categoryPage.getTotalPages(),
+                categoryPage.getTotalElements(),
+                categories
+        );
+    }
 }
