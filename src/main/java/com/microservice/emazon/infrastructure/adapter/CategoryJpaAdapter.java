@@ -46,11 +46,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         categoryRepository.save(categoryEntityMapper.toCategoryEntity(category));
     }
 
-    @Override
-    public void deleteCategory(Long id) {
-        // not necessary yet
-    }
-
     // TODO: modificacion 7 - Se agrega el metodo getPagination a la clase CategoryJpaAdapter implementado de la interfaz ICategoryPersistencePort
     @Override
     public Pagination<Category> getPagination(PaginationUtil paginationUtil) {

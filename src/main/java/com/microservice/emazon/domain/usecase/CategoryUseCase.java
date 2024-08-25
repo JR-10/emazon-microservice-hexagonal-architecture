@@ -43,10 +43,6 @@ public class CategoryUseCase  implements ICategoryServicePort {
                 category.getDescription().length() < 90;
     }
 
-    @Override
-    public void deleteCategory(Long id) {
-        // not necessary yet
-    }
 
     // TODO: modificacion 5 - Se agrega el metodo getPagination a la clase CategoryUseCase implementando la interfaz ICategoryServicePort
     @Override

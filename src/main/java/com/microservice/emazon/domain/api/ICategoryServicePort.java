@@ -19,8 +19,6 @@ public interface ICategoryServicePort {
 
     void saveCategory(Category category);
 
-    void deleteCategory(Long id);
-
     // TODO: modificacion 4 - Se agrega el metodo getPagination a la interfaz ICategoryServicePort
     Pagination<Category> getPagination(PaginationUtil paginationUtil);
 
