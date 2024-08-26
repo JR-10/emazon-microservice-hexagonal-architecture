@@ -1,6 +1,6 @@
-package com.microservice.emazon.infrastructure.repository;
+package com.microservice.emazon.infrastructure.output.repository;
 
-import com.microservice.emazon.infrastructure.entity.CategoryEntity;
+import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

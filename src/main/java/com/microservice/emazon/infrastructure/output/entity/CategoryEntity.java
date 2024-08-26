@@ -1,4 +1,4 @@
-package com.microservice.emazon.infrastructure.entity;
+package com.microservice.emazon.infrastructure.output.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

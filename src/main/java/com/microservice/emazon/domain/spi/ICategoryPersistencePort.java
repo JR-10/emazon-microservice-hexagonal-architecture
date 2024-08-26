@@ -7,6 +7,12 @@ import com.microservice.emazon.domain.util.PaginationUtil;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * SPI - Service Provider Interface
+ * Category persistence port
+ * Inteferfaz definida como puerta de salida para interactuar con tecnologias externas
+ * Las implementaciones concretas de estas interfaces se inyectan desde fuera del núcleo (Infraestructura)
+ */
 public interface ICategoryPersistencePort {
 
     List<Category> getAllCategories();
