@@ -1,17 +1,16 @@
 package com.microservice.emazon.infrastructure.adapter;
 
 import com.microservice.emazon.domain.model.Category;
-import com.microservice.emazon.infrastructure.entity.CategoryEntity;
+import com.microservice.emazon.infrastructure.output.adapter.CategoryJpaAdapter;
+import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
-import com.microservice.emazon.infrastructure.mapper.ICategoryEntityMapper;
-import com.microservice.emazon.infrastructure.repository.ICategoryRepository;
+import com.microservice.emazon.infrastructure.output.mapper.ICategoryEntityMapper;
+import com.microservice.emazon.infrastructure.output.repository.ICategoryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import java.util.Collections;
 import java.util.List;

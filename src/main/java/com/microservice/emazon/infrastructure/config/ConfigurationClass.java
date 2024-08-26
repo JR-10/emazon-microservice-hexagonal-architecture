@@ -1,7 +1,10 @@
 package com.microservice.emazon.infrastructure.config;
 
+import com.microservice.emazon.domain.api.IBrandServicePort;
 import com.microservice.emazon.domain.api.ICategoryServicePort;
+import com.microservice.emazon.domain.spi.IBrandPersistencePort;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
+import com.microservice.emazon.domain.usecase.BrandUseCase;
 import com.microservice.emazon.domain.usecase.CategoryUseCase;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,6 +16,11 @@ public class ConfigurationClass {
     @Bean
     public ICategoryServicePort categoryServicePort(ICategoryPersistencePort categoryPersistentPort) {
         return new CategoryUseCase(categoryPersistentPort);
+    }
+
+    @Bean
+    public IBrandServicePort brandServicePort(IBrandPersistencePort brandPersistentPort) {
+        return new BrandUseCase(brandPersistentPort);
     }
 
 }

@@ -1,13 +1,13 @@
-package com.microservice.emazon.infrastructure.adapter;
+package com.microservice.emazon.infrastructure.output.adapter;
 
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
-import com.microservice.emazon.infrastructure.entity.CategoryEntity;
+import com.microservice.emazon.infrastructure.output.repository.ICategoryRepository;
+import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
+import com.microservice.emazon.infrastructure.output.mapper.ICategoryEntityMapper;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
-import com.microservice.emazon.infrastructure.mapper.ICategoryEntityMapper;
-import com.microservice.emazon.infrastructure.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

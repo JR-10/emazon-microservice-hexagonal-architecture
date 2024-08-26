@@ -1,4 +1,4 @@
-package com.microservice.emazon.infrastructure.controller;
+package com.microservice.emazon.infrastructure.input.rest.controller;
 
 import com.microservice.emazon.application.dto.CategoryRequestDto;
 import com.microservice.emazon.application.dto.CategoryResponseDto;
