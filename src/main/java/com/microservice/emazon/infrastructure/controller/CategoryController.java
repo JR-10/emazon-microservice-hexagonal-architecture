@@ -3,6 +3,8 @@ package com.microservice.emazon.infrastructure.controller;
 import com.microservice.emazon.application.dto.CategoryRequestDto;
 import com.microservice.emazon.application.dto.CategoryResponseDto;
 import com.microservice.emazon.application.handler.ICategoryHandler;
+import com.microservice.emazon.domain.model.Pagination;
+import com.microservice.emazon.domain.util.PaginationUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,7 +12,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,14 +50,16 @@ public class CategoryController {
     }
 
 
-    @Operation(summary = "Get a category by ordering")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Category found",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryResponseDto.class))),
-            @ApiResponse(responseCode = "404", description = "Category not found", content = @Content)
-    })
-    @GetMapping("/getCategories/{ordering}")
-    public ResponseEntity<List<CategoryResponseDto>> getCategories(@PathVariable String ordering, Pageable pageable){
-        return ResponseEntity.ok().body(categoryHandler.getCategories(ordering,pageable).getContent());
+    // TODO: modificacion 1 llamado al handler
+    @GetMapping("/pagination")
+    public ResponseEntity<Pagination<CategoryResponseDto>> getPagination(
+            @RequestParam(defaultValue = "0", required = false) int pageNumber,
+            @RequestParam(defaultValue = "5", required = false) int pageSize,
+            @RequestParam(defaultValue = "name", required = false) String nameFilter,
+            @RequestParam(defaultValue = "true", required = false) boolean ascending
+    )  {
+    Pagination<CategoryResponseDto> listpagination = categoryHandler.getPagination(new PaginationUtil(pageSize, pageNumber, nameFilter, ascending));
+        return ResponseEntity.ok().body(listpagination);
     }
+
 }

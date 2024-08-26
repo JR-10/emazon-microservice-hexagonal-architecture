@@ -3,6 +3,7 @@ package com.microservice.emazon.application.mapper;
 import com.microservice.emazon.application.dto.CategoryRequestDto;
 import com.microservice.emazon.application.dto.CategoryResponseDto;
 import com.microservice.emazon.domain.model.Category;
+import com.microservice.emazon.domain.model.Pagination;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
@@ -39,5 +40,9 @@ public interface ICategoryDtoMapper {
      * @return CategoryResponseDto
      */
     CategoryResponseDto categoryToCategoryDto(Category category);
+
+
+    Pagination<CategoryResponseDto> paginationToDto(Pagination<Category> pagination);
+
 
 }
