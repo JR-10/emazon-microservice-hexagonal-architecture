@@ -18,10 +18,10 @@ public class BrandRequestDto {
     @NotNull
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50)
-    private String nameBrand;
+    private String name;
 
     @NotNull
     @NotBlank(message = "Description is required")
     @Size(min = 10, max = 120)
-    private String descriptionBrand;
+    private String description;
 }

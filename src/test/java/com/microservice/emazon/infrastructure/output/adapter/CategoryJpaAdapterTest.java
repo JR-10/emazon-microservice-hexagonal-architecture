@@ -1,9 +1,8 @@
-package com.microservice.emazon.infrastructure.adapter;
+package com.microservice.emazon.infrastructure.output.adapter;
 
 import com.microservice.emazon.domain.model.Category;
-import com.microservice.emazon.infrastructure.output.adapter.CategoryJpaAdapter;
-import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.exeptions.CategoryException;
+import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.output.mapper.ICategoryEntityMapper;
 import com.microservice.emazon.infrastructure.output.repository.ICategoryRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 class CategoryJpaAdapterTest {
 

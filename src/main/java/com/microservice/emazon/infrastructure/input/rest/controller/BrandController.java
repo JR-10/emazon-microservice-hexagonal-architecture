@@ -31,7 +31,7 @@ public class BrandController {
     @PostMapping("/addBrand")
     public ResponseEntity<String> createBrand(@RequestBody BrandRequestDto brandRequestDto){
         brandHandler.saveBrand(brandRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Ha creado exitosamente la marca " + brandRequestDto.getNameBrand());
+        return ResponseEntity.status(HttpStatus.CREATED).body("Ha creado exitosamente la marca " + brandRequestDto.getName());
     }
 
 

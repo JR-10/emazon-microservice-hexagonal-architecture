@@ -3,27 +3,37 @@ package com.microservice.emazon.domain.model;
 
 public class Brand {
 
-    private String nameBrand;
-    private String descriptionBrand;
+    private Long id;
+    private String name;
+    private String description;
 
-    public Brand(String nameBrand, String descriptionBrand) {
-        this.nameBrand = nameBrand;
-        this.descriptionBrand = descriptionBrand;
+    public Brand(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
-    public String getNameBrand() {
-        return nameBrand;
+    public Long getId() {
+        return id;
     }
 
-    public void setNameBrand(String nameBrand) {
-        this.nameBrand = nameBrand;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getDescriptionBrand() {
-        return descriptionBrand;
+    public String getName() {
+        return name;
     }
 
-    public void setDescriptionBrand(String descriptionBrand) {
-        this.descriptionBrand = descriptionBrand;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
