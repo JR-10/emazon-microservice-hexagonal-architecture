@@ -58,7 +58,7 @@ public class CategoryController {
             @RequestParam(defaultValue = "name", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     )  {
-    Pagination<CategoryResponseDto> listpagination = categoryHandler.getPagination(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));
+    Pagination<CategoryResponseDto> listpagination = categoryHandler.getPagination(new PaginationUtil(pageSize, pageNumber, nameFilter, ascending));
         return ResponseEntity.ok().body(listpagination);
     }
 

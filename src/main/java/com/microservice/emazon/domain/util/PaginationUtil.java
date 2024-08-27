@@ -7,9 +7,9 @@ public class PaginationUtil {
     private String nameFilter;
     private boolean ascending;
 
-    public PaginationUtil(int pageNumber, int pageSize, String nameFilter, boolean ascending) {
-        this.pageNumber = pageNumber;
+    public PaginationUtil(int pageSize, int pageNumber, String nameFilter, boolean ascending) {
         this.pageSize = pageSize;
+        this.pageNumber = pageNumber;
         this.nameFilter = nameFilter;
         this.ascending = ascending;
     }
