@@ -2,7 +2,9 @@ package com.microservice.emazon.domain.usecase;
 
 import com.microservice.emazon.domain.api.IBrandServicePort;
 import com.microservice.emazon.domain.model.Brand;
+import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.IBrandPersistencePort;
+import com.microservice.emazon.domain.util.PaginationUtil;
 
 public class BrandUseCase implements IBrandServicePort {
 
@@ -17,5 +19,10 @@ public class BrandUseCase implements IBrandServicePort {
         // revisar validacion si cumple con los croterios de aceptacion
         // aqui es donde va la logica de negocio
         brandPersistencePort.saveBrand(brand);
+    }
+
+    @Override
+    public Pagination<Brand> getAllBrands(PaginationUtil paginationUtil) {
+        return brandPersistencePort.getAllBrands(paginationUtil);
     }
 }
