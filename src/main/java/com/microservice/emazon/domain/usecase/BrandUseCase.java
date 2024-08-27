@@ -18,6 +18,9 @@ public class BrandUseCase implements IBrandServicePort {
     public void saveBrand(Brand brand) {
         // revisar validacion si cumple con los croterios de aceptacion
         // aqui es donde va la logica de negocio
+        if (brand == null) {
+            throw new NullPointerException("Brand cannot be null");
+        }
         brandPersistencePort.saveBrand(brand);
     }
 
