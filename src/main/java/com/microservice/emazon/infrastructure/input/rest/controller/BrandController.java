@@ -48,12 +48,12 @@ public class BrandController {
 
     @GetMapping("/getAllBrands")
     public ResponseEntity<Pagination<BrandResponseDto>> getAllBrands(
-            @RequestParam(defaultValue = "0", required = false) int pageNo,
-            @RequestParam(defaultValue = "5", required = false) int pageSiz,
+            @RequestParam(defaultValue = "0", required = false) int pageNumber,
+            @RequestParam(defaultValue = "5", required = false) int pageSize,
             @RequestParam(defaultValue = "name", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     )  {
-    Pagination<BrandResponseDto> listBrandsPagination = brandHandler.getAllBrands(new PaginationUtil(pageNo, pageSiz, nameFilter, ascending));
+    Pagination<BrandResponseDto> listBrandsPagination = brandHandler.getAllBrands(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));
         return ResponseEntity.ok().body(listBrandsPagination);
     }
 

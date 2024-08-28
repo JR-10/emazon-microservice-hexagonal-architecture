@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -24,4 +26,5 @@ public class BrandRequestDto {
     @NotBlank(message = "Description is required")
     @Size(min = 10, max = 120)
     private String description;
+    
 }

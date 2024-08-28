@@ -27,4 +27,7 @@ public class ArticleRequestDto {
     @NotNull
     private Long price;
 
+    @NotNull
+    private Long idBrand;
+
 }

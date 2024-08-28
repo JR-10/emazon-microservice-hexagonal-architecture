@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -15,5 +17,6 @@ public class BrandResponseDto {
     private Long id;
     private String name;
     private String description;
+    private List<ArticleResponseDto> articles;
 
 }

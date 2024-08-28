@@ -14,9 +14,7 @@ public class ArticleResponseDto {
         private Long id;
         private String name;
         private String description;
-        private Long idCategory;
         private Long idBrand;
         private Long quantity;
         private Long price;
-
 }

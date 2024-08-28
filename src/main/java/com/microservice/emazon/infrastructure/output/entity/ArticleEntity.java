@@ -36,10 +36,10 @@ public class ArticleEntity {
             inverseJoinColumns = @JoinColumn(name = "id_category")
     )
     private List<CategoryEntity> categories;
-
+    */
 
     @ManyToOne
     @JoinColumn(name = "id_brand", nullable = false)
     private BrandEntity brand;
-    */
+
 }

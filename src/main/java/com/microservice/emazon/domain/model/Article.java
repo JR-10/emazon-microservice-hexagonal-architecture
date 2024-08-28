@@ -5,16 +5,14 @@ public class Article {
     private Long id;
     private String name;
     private String description;
-    private Long idCategory;
     private Long idBrand;
     private Long quantity;
     private Long price;
 
-    public Article(Long id, String name, String description, Long idCategory, Long idBrand, Long quantity, Long price) {
+    public Article(Long id, String name, String description, Long idBrand, Long quantity, Long price) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.idCategory = idCategory;
         this.idBrand = idBrand;
         this.quantity = quantity;
         this.price = price;
@@ -42,14 +40,6 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Long getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(Long idCategory) {
-        this.idCategory = idCategory;
     }
 
     public Long getIdBrand() {
