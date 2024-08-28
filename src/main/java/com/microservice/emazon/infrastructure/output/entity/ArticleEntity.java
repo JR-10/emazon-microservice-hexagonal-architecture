@@ -20,6 +20,10 @@ public class ArticleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
+    private String description;
+
     private Long quantity;
 
     private Long price;

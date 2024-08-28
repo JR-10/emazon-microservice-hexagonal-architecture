@@ -14,6 +14,14 @@ import lombok.Setter;
 public class ArticleRequestDto {
 
     @NotNull
+    @NotBlank(message = "Name is required")
+    private String name;
+
+    @NotNull
+    @NotBlank(message = "Description is required")
+    private String description;
+
+    @NotNull
     @NotBlank(message = "Category is required")
     private Long quantity;
 
