@@ -22,11 +22,9 @@ public class ArticleRequestDto {
     private String description;
 
     @NotNull
-    @NotBlank(message = "Category is required")
     private Long quantity;
 
     @NotNull
-    @NotBlank(message = "Brand is required")
     private Long price;
 
 }

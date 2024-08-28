@@ -27,7 +27,8 @@ public class CategoryEntity {
 
     private String description;
 
+    /*
     @ManyToMany(mappedBy = "categories")
     private List<ArticleEntity> articles = new ArrayList<>();
-
+    */
 }

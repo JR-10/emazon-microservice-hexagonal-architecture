@@ -28,6 +28,7 @@ public class ArticleEntity {
 
     private Long price;
 
+    /*
     @ManyToMany
     @JoinTable(
             name = "article_category_tbl",
@@ -40,5 +41,5 @@ public class ArticleEntity {
     @ManyToOne
     @JoinColumn(name = "id_brand", nullable = false)
     private BrandEntity brand;
-
+    */
 }

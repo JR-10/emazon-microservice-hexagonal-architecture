@@ -24,6 +24,8 @@ public class BrandEntity {
     private String description;
 
 
+    /*
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArticleEntity> articles = new ArrayList<>();
+     */
 }

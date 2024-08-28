@@ -3,13 +3,17 @@ package com.microservice.emazon.domain.model;
 public class Article {
 
     private Long id;
+    private String name;
+    private String description;
     private Long idCategory;
     private Long idBrand;
     private Long quantity;
     private Long price;
 
-    public Article(Long id, Long idCategory, Long idBrand, Long quantity, Long price) {
+    public Article(Long id, String name, String description, Long idCategory, Long idBrand, Long quantity, Long price) {
         this.id = id;
+        this.name = name;
+        this.description = description;
         this.idCategory = idCategory;
         this.idBrand = idBrand;
         this.quantity = quantity;
@@ -22,6 +26,22 @@ public class Article {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getIdCategory() {
