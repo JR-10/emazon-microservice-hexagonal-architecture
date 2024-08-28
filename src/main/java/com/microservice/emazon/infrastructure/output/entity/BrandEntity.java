@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "brand_tbl")
 @NoArgsConstructor
@@ -19,4 +22,8 @@ public class BrandEntity {
     private Long id;
     private String name;
     private String description;
+
+
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArticleEntity> articles = new ArrayList<>();
 }

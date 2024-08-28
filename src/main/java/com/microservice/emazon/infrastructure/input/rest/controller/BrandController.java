@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class BrandController {
             @ApiResponse(responseCode = "409", description = "Brand already exists", content = @Content)
     })
     @PostMapping("/addBrand")
-    public ResponseEntity<String> createBrand(@RequestBody BrandRequestDto brandRequestDto){
+    public ResponseEntity<String> createBrand(@RequestBody @Valid BrandRequestDto brandRequestDto){
         brandHandler.saveBrand(brandRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Ha creado exitosamente la marca " + brandRequestDto.getName());
     }

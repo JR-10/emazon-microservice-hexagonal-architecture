@@ -3,6 +3,9 @@ package com.microservice.emazon.infrastructure.output.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase que es una Entidad para el mapeo de la tabla en la BD
  *
@@ -23,5 +26,8 @@ public class CategoryEntity {
     private String name;
 
     private String description;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<ArticleEntity> articles = new ArrayList<>();
 
 }
