@@ -1,21 +1,28 @@
 package com.microservice.emazon.domain.model;
 
+import java.util.List;
+
 public class Article {
 
     private Long id;
     private String name;
     private String description;
-    private Long idBrand;
     private Long quantity;
-    private Long price;
+    private Double price;
+    private Long branId;
+    private List<Long> categoryIds;
 
-    public Article(Long id, String name, String description, Long idBrand, Long quantity, Long price) {
+    public Article() {
+    }
+
+    public Article(Long id, String name, String description, Long quantity, Double price, Long branId, List<Long> categoryIds) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.idBrand = idBrand;
         this.quantity = quantity;
         this.price = price;
+        this.branId = branId;
+        this.categoryIds = categoryIds;
     }
 
     public Long getId() {
@@ -42,14 +49,6 @@ public class Article {
         this.description = description;
     }
 
-    public Long getIdBrand() {
-        return idBrand;
-    }
-
-    public void setIdBrand(Long idBrand) {
-        this.idBrand = idBrand;
-    }
-
     public Long getQuantity() {
         return quantity;
     }
@@ -58,11 +57,27 @@ public class Article {
         this.quantity = quantity;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Long getBranId() {
+        return branId;
+    }
+
+    public void setBranId(Long branId) {
+        this.branId = branId;
+    }
+
+    public List<Long> getCategoryIds() {
+        return categoryIds;
+    }
+
+    public void setCategoryIds(List<Long> categoryIds) {
+        this.categoryIds = categoryIds;
     }
 }

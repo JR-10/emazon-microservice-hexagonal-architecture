@@ -12,6 +12,7 @@ public interface IArticleDtoMapper {
 
     Article articleDtoToArticle(ArticleRequestDto articleRequestDto);
 
+
 }
 
 

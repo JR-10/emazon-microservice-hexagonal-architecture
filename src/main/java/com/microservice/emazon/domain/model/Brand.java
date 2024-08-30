@@ -8,13 +8,14 @@ public class Brand {
     private Long id;
     private String name;
     private String description;
-    private List<Article> articles;
 
-    public Brand(Long id, String name, String description, List<Article> articles) {
+    public Brand() {
+    }
+
+    public Brand(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.articles = articles;
     }
 
     public Long getId() {
@@ -39,13 +40,5 @@ public class Brand {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
     }
 }

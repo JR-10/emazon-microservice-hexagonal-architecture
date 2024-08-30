@@ -20,4 +20,6 @@ public interface IArticleEntityMapper {
 
     Article toArticle(ArticleEntity articleEntity);
 
+    ArticleEntity toArticleEntity(Article article);
+
 }

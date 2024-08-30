@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "article_tbl")
@@ -18,28 +21,31 @@ public class ArticleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "quantity")
     private Long quantity;
 
+    @Column(name = "price")
     private Long price;
 
-    /*
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bran_id", nullable = false)
+    private BrandEntity brand;
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "article_category_tbl",
-            joinColumns = @JoinColumn(name = "id_article"),
-            inverseJoinColumns = @JoinColumn(name = "id_category")
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private List<CategoryEntity> categories;
-    */
-
-    @ManyToOne
-    @JoinColumn(name = "id_brand", nullable = false)
-    private BrandEntity brand;
+    private Set<CategoryEntity> categories = new HashSet<>();
 
 }

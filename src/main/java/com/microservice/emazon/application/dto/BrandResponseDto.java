@@ -17,6 +17,5 @@ public class BrandResponseDto {
     private Long id;
     private String name;
     private String description;
-    private List<ArticleResponseDto> articles;
 
 }
