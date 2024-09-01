@@ -5,13 +5,9 @@ import lombok.*;
 
 import java.util.Set;
 
-/**
- * Clase que es una Entidad para el mapeo de la tabla en la BD
- *
- * */
 
 @Entity
-@Table(name = "category_tbl" ) // definir el nombre que va a tener nuestra tabla
+@Table(name = "category_tbl" )
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

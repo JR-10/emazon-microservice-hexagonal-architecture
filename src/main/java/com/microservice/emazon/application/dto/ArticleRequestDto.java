@@ -12,32 +12,45 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import java.util.Set;
 
+import static com.microservice.emazon.application.util.ApplicationConstants.*;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class ArticleRequestDto {
 
-    @NotNull
-    @NotBlank(message = "Name is required")
+    @NotNull(message = NAME_NOT_NULL)
+    @NotBlank(message = NAME_ARTICLE_REQUIRED_MESSAGE)
+    @Size(
+            min = NAME_MIN_LENGTH,
+            max = NAME_MAX_LENGTH,
+            message = NAME_ARTICLE_LENGTH_MESSAGE)
     private String name;
 
-    @NotNull
-    @NotBlank(message = "Description is required")
+    @NotNull(message = DESCRIPTION_NOT_NULL)
+    @NotBlank(message = DESCRIPTION_ARTICLE_REQUIRED_MESSAGE)
+    @Size(
+            min = DESCRIPTION_MIN_LENGTH,
+            max = DESCRIPTION_ARTICLE_MAX_LENGTH,
+            message = DESCRIPTION_ARTICLE_LENGTH_MESSAGE)
     private String description;
 
-    @NotNull(message = "Quantity is required")
+    @NotNull(message = QUANTITY_ARTICLE_REQUIRED_MESSAGE)
     private Long quantity;
 
-    @NotNull(message = "Price is required")
+    @NotNull(message = PRICE_ARTICLE_REQUIRED_MESSAGE)
     private Long price;
 
-    @NotNull(message = "Brand ID is required")
+    @NotNull(message = BRAND_ARTICLE_REQUIRED_MESSAGE)
     private Long brandId;
 
-    @NotNull(message = "Category IDs are required")
-    @Size(min = 1, max = 3, message = "Category IDs must be between 1 and 3")
-    @UniqueElements(message = "Category IDs must be unique")
+    @NotNull(message = CATEGORY_ARTICLE_REQUIRED_MESSAGE)
+    @Size(
+            min = CATEGORY_ID_MIN_LENGTH,
+            max = CATEGORY_ID_MAX_LENGTH,
+            message = CATEGORY_ID_LENGTH_MESSAGE)
+    @UniqueElements(message = CATEGORY_ID_UNIQUE_MESSAGE)
     private Set<Long> categoryIds;
 
 }

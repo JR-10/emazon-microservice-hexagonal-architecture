@@ -46,7 +46,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         categoryRepository.save(categoryEntityMapper.toCategoryEntity(category));
     }
 
-    // TODO: modificacion 7 - Se agrega el metodo getPagination a la clase CategoryJpaAdapter implementado de la interfaz ICategoryPersistencePort
     @Override
     public Pagination<Category> getPagination(PaginationUtil paginationUtil) {
         Sort.Direction sortDirection = paginationUtil.isAscending()? Sort.Direction.ASC : Sort.Direction.DESC;

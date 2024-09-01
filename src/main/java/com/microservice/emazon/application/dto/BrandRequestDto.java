@@ -1,4 +1,3 @@
-// TODO: 2 - Create BrandRequestDto class
 package com.microservice.emazon.application.dto;
 
 import jakarta.validation.constraints.NotBlank;
@@ -9,7 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import static com.microservice.emazon.application.util.ApplicationConstants.*;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,14 +17,20 @@ import java.util.List;
 @Setter
 public class BrandRequestDto {
 
-    @NotNull
-    @NotBlank(message = "Name is required")
-    @Size(min = 3, max = 50)
+    @NotNull(message = NAME_NOT_NULL)
+    @NotBlank(message = NAME_BRAND_REQUIRED_MESSAGE)
+    @Size(
+            min = NAME_MIN_LENGTH,
+            max = NAME_MAX_LENGTH,
+            message = NAME_BRAND_LENGTH_MESSAGE)
     private String name;
 
-    @NotNull
-    @NotBlank(message = "Description is required")
-    @Size(min = 10, max = 120)
+    @NotNull(message = DESCRIPTION_NOT_NULL)
+    @NotBlank(message = DESCRIPTION_BRAND_REQUIRED_MESSAGE)
+    @Size(
+            min = DESCRIPTION_MIN_LENGTH,
+            max = DESCRIPTION_BRAND_MAX_LENGTH,
+            message = DESCRIPTION_BRAND_LENGTH_MESSAGE)
     private String description;
     
 }
