@@ -37,7 +37,7 @@ public class ArticleEntity {
     private Long price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bran_id", nullable = false)
+    @JoinColumn(name = "brand_id")
     private BrandEntity brand;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -46,6 +46,6 @@ public class ArticleEntity {
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<CategoryEntity> categories = new HashSet<>();
+    private Set<CategoryEntity> categories;
 
 }

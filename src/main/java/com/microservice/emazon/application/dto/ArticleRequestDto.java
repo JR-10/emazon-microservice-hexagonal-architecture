@@ -10,7 +10,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.UniqueElements;
 
 
-import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,6 +38,6 @@ public class ArticleRequestDto {
     @NotNull(message = "Category IDs are required")
     @Size(min = 1, max = 3, message = "Category IDs must be between 1 and 3")
     @UniqueElements(message = "Category IDs must be unique")
-    private List<Long> categoryIds;
+    private Set<Long> categoryIds;
 
 }

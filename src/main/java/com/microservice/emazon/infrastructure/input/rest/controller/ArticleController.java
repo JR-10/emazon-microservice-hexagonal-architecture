@@ -19,7 +19,7 @@ public class ArticleController {
     private final IArticleHandler articleHandler;
 
     @PostMapping("/addArticle")
-    public ResponseEntity<String> createArticle(@RequestBody @Valid ArticleRequestDto articleRequestDto ) {
+    public ResponseEntity<String> saveArticle(@RequestBody @Valid ArticleRequestDto articleRequestDto ) {
         articleHandler.saveArticle(articleRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Ha creado exitosamente el articulo " + articleRequestDto.getName());
     }
