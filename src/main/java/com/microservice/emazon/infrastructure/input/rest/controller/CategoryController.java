@@ -1,7 +1,7 @@
 package com.microservice.emazon.infrastructure.input.rest.controller;
 
-import com.microservice.emazon.application.dto.CategoryRequestDto;
-import com.microservice.emazon.application.dto.CategoryResponseDto;
+import com.microservice.emazon.application.dto.request.CategoryRequestDto;
+import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.application.handler.ICategoryHandler;
 import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.model.Pagination;
@@ -58,7 +58,7 @@ public class CategoryController {
     @PostMapping("/addCategory")
     public ResponseEntity<String> createCategory(@RequestBody @Valid CategoryRequestDto categoryRequestDto) {
         categoryHandler.saveCategory(categoryRequestDto);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_CATEGORY_MESSAGE +categoryRequestDto.getName());
+        return  ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_CATEGORY_MESSAGE + categoryRequestDto.getName());
     }
 
 

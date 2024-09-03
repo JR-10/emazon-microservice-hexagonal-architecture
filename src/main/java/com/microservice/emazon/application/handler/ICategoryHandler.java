@@ -1,7 +1,7 @@
 package com.microservice.emazon.application.handler;
 
-import com.microservice.emazon.application.dto.CategoryRequestDto;
-import com.microservice.emazon.application.dto.CategoryResponseDto;
+import com.microservice.emazon.application.dto.request.CategoryRequestDto;
+import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
 

@@ -11,6 +11,8 @@ import com.microservice.emazon.domain.usecase.BrandUseCase;
 import com.microservice.emazon.domain.usecase.CategoryUseCase;
 import org.springframework.context.annotation.Configuration;
 
+
+
 import org.springframework.context.annotation.Bean;
 
 @Configuration
@@ -21,10 +23,13 @@ public class ConfigurationClass {
         return new CategoryUseCase(categoryPersistentPort);
     }
 
+
     @Bean
-    public IBrandServicePort brandServicePort(IBrandPersistencePort brandPersistentPort) {
+    public IBrandServicePort brandPersistencePort(IBrandPersistencePort brandPersistentPort) {
         return new BrandUseCase(brandPersistentPort);
     }
+
+
 
     @Bean
     public IArticleServicePort articleServicePort(IArticlePersistencePort articlePersistencePort) {

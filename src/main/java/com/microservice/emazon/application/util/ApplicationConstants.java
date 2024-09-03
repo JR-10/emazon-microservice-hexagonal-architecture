@@ -20,8 +20,8 @@ public class ApplicationConstants {
     public static final String NO_CATEGORIES_CREATED_MESSAGE = "No categories created";
     public static final String CATEGORY_NAME_ALREADY_EXISTS_MESSAGE = "The category name already exists";
     public static final String SUCCESS_CREATED_CATEGORY_MESSAGE = "You have successfully created the category ";
-    public static final String CATEGORY_NAME_CANNOT_BE_EMPTY_MESSAGE = "The category name cannot be empty";
-    public static final String CATEGORY_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE = "The category description cannot be empty";
+    public static final String CATEGORY_NAME_CANNOT_BE_EMPTY_MESSAGE = "The category name cannot be empty or null";
+    public static final String CATEGORY_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE = "The category description cannot be empty or null";
 
 
     public static final String NAME_BRAND_REQUIRED_MESSAGE = "Brand name is required";
@@ -29,6 +29,9 @@ public class ApplicationConstants {
     public static final String DESCRIPTION_BRAND_REQUIRED_MESSAGE = "Brand description is required";
     public static final int DESCRIPTION_BRAND_MAX_LENGTH = 120;
     public static final String DESCRIPTION_BRAND_LENGTH_MESSAGE = "The brand description must be between " + DESCRIPTION_MIN_LENGTH + " and "+DESCRIPTION_BRAND_MAX_LENGTH+" characters";
+    public static final String BRAND_NAME_CANNOT_BE_EMPTY_MESSAGE = "The brand name cannot be empty or null";
+    public static final String BRAND_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE = "The brand description cannot be empty or null";
+    public static final String SUCCESS_CREATED_BRAND_MESSAGE = "You have successfully created the brand ";
 
 
     public static final String NAME_ARTICLE_REQUIRED_MESSAGE = "Article name is required";

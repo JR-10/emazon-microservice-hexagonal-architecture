@@ -1,8 +1,7 @@
-// TODO: 4-Create the BrandHandler class that implements IBrandHandler interface
 package com.microservice.emazon.application.handler.impl;
 
-import com.microservice.emazon.application.dto.BrandRequestDto;
-import com.microservice.emazon.application.dto.BrandResponseDto;
+import com.microservice.emazon.application.dto.request.BrandRequestDto;
+import com.microservice.emazon.application.dto.response.BrandResponseDto;
 import com.microservice.emazon.application.handler.IBrandHandler;
 import com.microservice.emazon.application.mapper.IBrandDtoMapper;
 import com.microservice.emazon.domain.api.IBrandServicePort;

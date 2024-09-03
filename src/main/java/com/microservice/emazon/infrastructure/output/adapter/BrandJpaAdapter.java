@@ -25,11 +25,12 @@ public class BrandJpaAdapter  implements IBrandPersistencePort {
 
     @Override
     public void saveBrand(Brand brand) {
-        // validacion si existe la marca creada con el mismo nombre
-        /*if (brandRepository.existsByNameIgnoreCase(brand.getName())) {
-            throw new BrandException("Marca existente");
-        }*/
         brandRepository.save(brandEntityMapper.toBrandEntity(brand));
+    }
+
+    @Override
+    public boolean brandExistsByName(String brandName) {
+        return brandRepository.existsByName(brandName);
     }
 
     @Override

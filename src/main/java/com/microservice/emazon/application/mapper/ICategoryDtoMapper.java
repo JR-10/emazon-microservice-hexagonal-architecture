@@ -1,7 +1,7 @@
 package com.microservice.emazon.application.mapper;
 
-import com.microservice.emazon.application.dto.CategoryRequestDto;
-import com.microservice.emazon.application.dto.CategoryResponseDto;
+import com.microservice.emazon.application.dto.request.CategoryRequestDto;
+import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.model.Pagination;
 import org.mapstruct.Mapper;

@@ -1,4 +1,4 @@
-package com.microservice.emazon.application.dto;
+package com.microservice.emazon.application.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

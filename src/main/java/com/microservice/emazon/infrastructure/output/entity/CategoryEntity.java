@@ -25,6 +25,7 @@ public class CategoryEntity {
     @Column(name = "description")
     private String description;
 
+
     @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
     private Set<ArticleEntity> articles;
 
