@@ -1,5 +1,8 @@
 package com.microservice.emazon.application.util;
 
+/*
+* Clase que contiene las constantes de la aplicacion
+*/
 public class ApplicationConstants {
 
     public static final int NAME_MIN_LENGTH = 3;
@@ -14,6 +17,11 @@ public class ApplicationConstants {
     public static final int DESCRIPTION_CATEGORY_MAX_LENGTH = 90;
     public static final String DESCRIPTION_CATEGORY_REQUIRED_MESSAGE = "category description is required";
     public static final String DESCRIPTION_CATEGORY_LENGTH_MESSAGE = "The category description must be between " + DESCRIPTION_MIN_LENGTH + " and "+DESCRIPTION_CATEGORY_MAX_LENGTH+" characters";
+    public static final String NO_CATEGORIES_CREATED_MESSAGE = "No categories created";
+    public static final String CATEGORY_NAME_ALREADY_EXISTS_MESSAGE = "The category name already exists";
+    public static final String SUCCESS_CREATED_CATEGORY_MESSAGE = "You have successfully created the category ";
+    public static final String CATEGORY_NAME_CANNOT_BE_EMPTY_MESSAGE = "The category name cannot be empty";
+    public static final String CATEGORY_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE = "The category description cannot be empty";
 
 
     public static final String NAME_BRAND_REQUIRED_MESSAGE = "Brand name is required";
@@ -37,6 +45,5 @@ public class ApplicationConstants {
     public static final int CATEGORY_ID_MAX_LENGTH = 3;
     public static final String CATEGORY_ID_LENGTH_MESSAGE = "Category IDs must be between " + CATEGORY_ID_MIN_LENGTH + " and "+CATEGORY_ID_MAX_LENGTH;
     public static final String CATEGORY_ID_UNIQUE_MESSAGE = "Category IDs must be unique";
-
 
 }

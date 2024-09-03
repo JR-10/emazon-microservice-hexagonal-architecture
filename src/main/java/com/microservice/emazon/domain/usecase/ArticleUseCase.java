@@ -3,7 +3,7 @@ package com.microservice.emazon.domain.usecase;
 import com.microservice.emazon.domain.api.IArticleServicePort;
 import com.microservice.emazon.domain.model.Article;
 import com.microservice.emazon.domain.spi.IArticlePersistencePort;
-import com.microservice.emazon.infrastructure.exeptions.ArticleException;
+import com.microservice.emazon.domain.exeptions.ArticleException;
 
 
 public class ArticleUseCase implements IArticleServicePort {

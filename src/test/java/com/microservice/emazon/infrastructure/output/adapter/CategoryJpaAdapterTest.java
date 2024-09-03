@@ -1,7 +1,7 @@
 package com.microservice.emazon.infrastructure.output.adapter;
 
 import com.microservice.emazon.domain.model.Category;
-import com.microservice.emazon.infrastructure.exeptions.CategoryException;
+import com.microservice.emazon.domain.exeptions.CategoryExceptions;
 import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.output.mapper.ICategoryEntityMapper;
 import com.microservice.emazon.infrastructure.output.repository.ICategoryRepository;
@@ -54,7 +54,7 @@ class CategoryJpaAdapterTest {
     void getAllCategories_ThrowsExceptionWhenNoCategories() {
         when(categoryRepository.findAll()).thenReturn(Collections.emptyList());
 
-        assertThrows(CategoryException.class, () -> categoryJpaAdapter.getAllCategories());
+        assertThrows(CategoryExceptions.class, () -> categoryJpaAdapter.getAllCategories());
     }
 
 
@@ -77,7 +77,7 @@ class CategoryJpaAdapterTest {
 
         when(categoryRepository.existsByNameIgnoreCase(anyString())).thenReturn(true);
 
-        assertThrows(CategoryException.class, () -> categoryJpaAdapter.saveCategory(category));
+        assertThrows(CategoryExceptions.class, () -> categoryJpaAdapter.saveCategory(category));
     }
 
     @Test

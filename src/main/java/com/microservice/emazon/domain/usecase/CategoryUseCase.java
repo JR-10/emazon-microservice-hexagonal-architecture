@@ -1,53 +1,56 @@
 package com.microservice.emazon.domain.usecase;
 
+import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.api.ICategoryServicePort;
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
-import com.microservice.emazon.infrastructure.exeptions.CategoryException;
+import com.microservice.emazon.domain.util.ValidationUtil;
+import com.microservice.emazon.domain.exeptions.CategoryExceptions;
+
 
 import java.util.List;
-import java.util.Optional;
 
+/*
+* Clase que tiene la logica e implementa la interfaz de los puertos de servicio de categorias
+* */
 public class CategoryUseCase  implements ICategoryServicePort {
 
-
+    // Inyeccion de dependencias
     private final ICategoryPersistencePort categoryPersistencePort;
 
+    /*
+    * Constructor que inyecta la dependencia de la persistencia de categorias
+    * */
     public CategoryUseCase(ICategoryPersistencePort categoryPersistencePort) {
         this.categoryPersistencePort = categoryPersistencePort;
     }
 
+
     @Override
     public List<Category> getAllCategories() {
+        List<Category> categoryEntityList = categoryPersistencePort.getAllCategories();
+        if (categoryEntityList.isEmpty()) {
+            throw new CategoryExceptions.CategoryNotFoundException(ApplicationConstants.NO_CATEGORIES_CREATED_MESSAGE);
+        }
         return categoryPersistencePort.getAllCategories();
     }
 
 
     @Override
-    public Optional<Category> getCategory(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
     public void saveCategory(Category category) {
-        if (!isValidCategory(category)){
-            throw new CategoryException("Nombre o descripción supera el maximo de caracteres permitidos");
+        ValidationUtil.validateCategory(category);
+        if (categoryPersistencePort.categoryExistsByName(category.getName())) {
+            throw new CategoryExceptions.CategoryNameAlreadyExistsException(ApplicationConstants.CATEGORY_NAME_ALREADY_EXISTS_MESSAGE);
         }
         categoryPersistencePort.saveCategory(category);
     }
 
-    private boolean isValidCategory(Category category){
-        return category.getName().length() < 50 &&
-                category.getDescription().length() < 90;
-    }
 
-
-    // TODO: modificacion 5 - Se agrega el metodo getPagination a la clase CategoryUseCase implementando la interfaz ICategoryServicePort
     @Override
-    public Pagination<Category> getPagination(PaginationUtil paginationUtil) {
-        return categoryPersistencePort.getPagination(paginationUtil);
+    public Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil) {
+        return categoryPersistencePort.getAllCategoriesPagination(paginationUtil);
     }
 
 }

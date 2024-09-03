@@ -3,7 +3,7 @@ package com.microservice.emazon.infrastructure.output.adapter;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
-import com.microservice.emazon.infrastructure.exeptions.BrandException;
+import com.microservice.emazon.domain.exeptions.BrandException;
 import com.microservice.emazon.infrastructure.output.entity.BrandEntity;
 import com.microservice.emazon.infrastructure.output.mapper.IBrandEntityMapper;
 import com.microservice.emazon.infrastructure.output.repository.IBrandRepository;

@@ -2,7 +2,7 @@ package com.microservice.emazon.domain.usecase;
 
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
-import com.microservice.emazon.infrastructure.exeptions.CategoryException;
+import com.microservice.emazon.domain.exeptions.CategoryExceptions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -70,7 +70,7 @@ class CategoryUseCaseTest {
     void saveCategory_ThrowsExceptionForInvalidCategory() {
         Category category = new Category(1L, "A very long category name that exceeds the maximum allowed length of fifty characters", "A very long category description that exceeds the maximum allowed length of ninety characters");
 
-        assertThrows(CategoryException.class, () -> categoryUseCase.saveCategory(category));
+        assertThrows(CategoryExceptions.class, () -> categoryUseCase.saveCategory(category));
     }
 
 }

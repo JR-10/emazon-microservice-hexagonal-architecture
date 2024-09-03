@@ -8,6 +8,9 @@ import com.microservice.emazon.domain.util.PaginationUtil;
 
 import java.util.List;
 
+/*
+* Interface para manejar las categorias
+*/
 public interface ICategoryHandler {
 
 
@@ -23,12 +26,11 @@ public interface ICategoryHandler {
      */
     void saveCategory(CategoryRequestDto categoryRequestDto);
 
-    // TODO: modificacion 2 - Se agrega el metodo getPagination a la interfaz ICategoryHandler
     /*
      * Get categories by pagination
      * @param paginationUtil
      * @return Pagination<CategoryResponseDto>
      */
-    Pagination<CategoryResponseDto> getPagination(PaginationUtil paginationUtil);
+    Pagination<CategoryResponseDto> getAllCategoriesPagination(PaginationUtil paginationUtil);
 
 }

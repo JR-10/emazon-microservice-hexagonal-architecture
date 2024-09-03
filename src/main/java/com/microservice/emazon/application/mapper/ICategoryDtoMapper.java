@@ -10,12 +10,12 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 
 
+/*
+ * Interface para hacer el mapeo de las categorias a DTOs y viceversa
+ */
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
-/*
- * Convert Category to CategoryDto and vice versa
- */
 public interface ICategoryDtoMapper {
 
     /*
@@ -42,7 +42,12 @@ public interface ICategoryDtoMapper {
     CategoryResponseDto categoryToCategoryDto(Category category);
 
 
-    Pagination<CategoryResponseDto> paginationToDto(Pagination<Category> pagination);
+    /*
+     * Convert Pagination<Category> to Pagination<CategoryResponseDto>
+     * @param pagination
+     * @return Pagination<CategoryResponseDto>
+     */
+    Pagination<CategoryResponseDto> paginationToCategoryResponseDto(Pagination<Category> pagination);
 
 
 }
