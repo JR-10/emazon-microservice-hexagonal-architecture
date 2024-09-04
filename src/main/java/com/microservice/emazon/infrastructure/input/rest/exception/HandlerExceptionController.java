@@ -1,8 +1,8 @@
 package com.microservice.emazon.infrastructure.input.rest.exception;
 
-import com.microservice.emazon.domain.exeptions.ArticleException;
-import com.microservice.emazon.domain.exeptions.BrandExceptions;
-import com.microservice.emazon.domain.exeptions.CategoryExceptions;
+import com.microservice.emazon.domain.exceptions.ArticleException;
+import com.microservice.emazon.domain.exceptions.BrandExceptions;
+import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,7 @@ public class HandlerExceptionController {
 
 
     /*
-    * Metodo que maneja las excepciones de validacion de los campos de los objetos Dto`s
+    * Metodo que maneja las excepciones de validacion de los campos de los objetos Dto`s (entrada)
     * */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
@@ -60,10 +60,18 @@ public class HandlerExceptionController {
 
 
     /*
-    * Metodo que maneja la excepcion dew que el nombre de la marca ya existe
+    * Metodo que maneja la excepcion de que el nombre de la marca ya existe
     * */
     @ExceptionHandler(BrandExceptions.BrandNameAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> handleBrandNameAlreadyExistsException(BrandExceptions.BrandNameAlreadyExistsException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
+    }
+
+    /*
+    * Metodo que maneja la excepcion de que la marca no existe
+    * */
+    @ExceptionHandler(BrandExceptions.BrandNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleBrandNotFoundException(BrandExceptions.BrandNotFoundException e){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
     }
 

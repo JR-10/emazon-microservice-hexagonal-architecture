@@ -6,6 +6,7 @@ import com.microservice.emazon.domain.util.PaginationUtil;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 /*
@@ -24,4 +25,6 @@ public interface ICategoryPersistencePort {
     boolean categoryExistsByName (String categoryName);
 
     Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil);
+
+    Set<String> getCategoryNamesByIds(Set<Long> ids);
 }

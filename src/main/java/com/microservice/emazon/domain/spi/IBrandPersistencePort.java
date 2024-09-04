@@ -11,4 +11,6 @@ public interface IBrandPersistencePort {
     boolean brandExistsByName(String brandName);
 
     Pagination<Brand> getAllBrands(PaginationUtil paginationUtil);
+
+    Brand getBrandById(Long brandId);
 }

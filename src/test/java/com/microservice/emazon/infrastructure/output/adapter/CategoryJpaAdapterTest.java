@@ -1,7 +1,6 @@
 package com.microservice.emazon.infrastructure.output.adapter;
 
 import com.microservice.emazon.domain.model.Category;
-import com.microservice.emazon.domain.exeptions.CategoryExceptions;
 import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.output.mapper.ICategoryEntityMapper;
 import com.microservice.emazon.infrastructure.output.repository.ICategoryRepository;
@@ -11,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

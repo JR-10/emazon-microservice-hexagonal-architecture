@@ -1,4 +1,4 @@
-package com.microservice.emazon.domain.exeptions;
+package com.microservice.emazon.domain.exceptions;
 
 public class ArticleException {
 

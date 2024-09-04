@@ -1,8 +1,11 @@
 package com.microservice.emazon.infrastructure.input.rest.controller;
 
 import com.microservice.emazon.application.dto.request.ArticleRequestDto;
+import com.microservice.emazon.application.dto.response.ArticleResponseDto;
 import com.microservice.emazon.application.handler.IArticleHandler;
 import com.microservice.emazon.application.util.ApplicationConstants;
+import com.microservice.emazon.domain.model.Pagination;
+import com.microservice.emazon.domain.util.PaginationUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -11,10 +14,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/article")
@@ -34,4 +34,17 @@ public class ArticleController {
         articleHandler.saveArticle(articleRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_ARTICLE_MESSAGE + articleRequestDto.getName());
     }
+
+
+    @GetMapping("/getArticlesByParameters")
+    public ResponseEntity<Pagination<ArticleResponseDto>> getArticlesByParameters(
+            @RequestParam(defaultValue = "0", required = false) int pageNumber,
+            @RequestParam(defaultValue = "5", required = false) int pageSize,
+            @RequestParam(defaultValue = "name", required = false) String nameFilter,
+            @RequestParam(defaultValue = "true", required = false) boolean ascending
+    ){
+        Pagination<ArticleResponseDto> listArticlePagination = articleHandler.getArticlesByParameters(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));
+        return ResponseEntity.ok().body(listArticlePagination);
+    }
+    
 }

@@ -1,6 +1,5 @@
 package com.microservice.emazon.infrastructure.output.adapter;
 
-import com.microservice.emazon.domain.exeptions.BrandExceptions;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;

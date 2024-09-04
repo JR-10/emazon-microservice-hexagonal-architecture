@@ -7,7 +7,7 @@ import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
 import com.microservice.emazon.domain.util.ValidationUtil;
-import com.microservice.emazon.domain.exeptions.CategoryExceptions;
+import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 
 
 import java.util.List;

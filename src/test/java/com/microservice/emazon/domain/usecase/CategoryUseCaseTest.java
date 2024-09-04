@@ -2,7 +2,6 @@ package com.microservice.emazon.domain.usecase;
 
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
-import com.microservice.emazon.domain.exeptions.CategoryExceptions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

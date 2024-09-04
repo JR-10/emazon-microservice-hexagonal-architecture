@@ -38,11 +38,11 @@ public class ConfigurationClass {
     }
 
     /*
-    * Metodo que define el bean del puerto de persistencia del articulo
-    * */
+     * Metodo que define el bean del puerto de persistencia del articulo, recibe como parametro los puertos de persistencia de la marca y la categoria ya que se necesitan para la creacion de un articulo y se implementa el caso de uso del articulo
+     */
     @Bean
-    public IArticleServicePort articleServicePort(IArticlePersistencePort articlePersistencePort) {
-        return new ArticleUseCase(articlePersistencePort);
+    public IArticleServicePort articleServicePort(IArticlePersistencePort articlePersistencePort, IBrandPersistencePort brandPersistencePort, ICategoryPersistencePort categoryPersistencePort) {
+        return new ArticleUseCase(articlePersistencePort, brandPersistencePort, categoryPersistencePort);
     }
 
 }

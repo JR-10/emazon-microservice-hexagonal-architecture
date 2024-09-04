@@ -2,7 +2,7 @@ package com.microservice.emazon.domain.usecase;
 
 import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.api.IBrandServicePort;
-import com.microservice.emazon.domain.exeptions.CategoryExceptions;
+import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.IBrandPersistencePort;

@@ -32,7 +32,7 @@ public class ApplicationConstants {
     public static final String BRAND_NAME_CANNOT_BE_EMPTY_MESSAGE = "The brand name cannot be empty or null";
     public static final String BRAND_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE = "The brand description cannot be empty or null";
     public static final String SUCCESS_CREATED_BRAND_MESSAGE = "You have successfully created the brand ";
-
+    public static final String BRAND_NOT_FOUND_MESSAGE = "The brand was not found";
 
     public static final String NAME_ARTICLE_REQUIRED_MESSAGE = "Article name is required";
     public static final String NAME_ARTICLE_LENGTH_MESSAGE = "The article name must be between " + NAME_MIN_LENGTH + " and "+NAME_MAX_LENGTH+" characters";
@@ -48,6 +48,7 @@ public class ApplicationConstants {
     public static final int CATEGORY_ID_MAX_LENGTH = 3;
     public static final String CATEGORY_ID_LENGTH_MESSAGE = "Category IDs must be between " + CATEGORY_ID_MIN_LENGTH + " and "+CATEGORY_ID_MAX_LENGTH;
     public static final String CATEGORY_ID_UNIQUE_MESSAGE = "Category IDs must be unique";
+    public static final String CATEGORY_NOT_FOUND_MESSAGE = "The categories was not found";
 
     public static final String ARTICLE_NAME_ALREADY_EXISTS_MESSAGE = "The article name already exists";
     public static final String ARTICLE_NAME_CANNOT_BE_EMPTY_MESSAGE = "The article name cannot be empty or null";
