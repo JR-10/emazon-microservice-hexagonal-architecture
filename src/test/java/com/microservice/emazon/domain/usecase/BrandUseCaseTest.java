@@ -65,18 +65,6 @@ class BrandUseCaseTest {
         });
     }
 
-    /*
-    @Test
-    void getAllBrandsSuccessfully() {
-        PaginationUtil paginationUtil = new PaginationUtil(0, 5, "name", true);
-        Pagination<Brand> expectedPagination = new Pagination<>(true, 0, 0, 0L, new ArrayList<>());
-        when(brandPersistencePort.getAllBrands(paginationUtil)).thenReturn(new Pagination<>(true, 0, 0, 0L, new ArrayList<>()));
-
-        Pagination<Brand> result = brandUseCase.getAllBrands(paginationUtil);
-        assertEquals(expectedPagination, result);
-        verify(brandPersistencePort, times(1)).getAllBrands(paginationUtil);
-    }
-    */
 
 
     @Test

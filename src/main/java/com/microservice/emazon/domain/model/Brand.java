@@ -1,11 +1,16 @@
 // TODO: 1 - Create a Brand class with nameBrand and descriptionBrand attributes
 package com.microservice.emazon.domain.model;
 
+import java.util.List;
+
 public class Brand {
 
     private Long id;
     private String name;
     private String description;
+
+    public Brand() {
+    }
 
     public Brand(Long id, String name, String description) {
         this.id = id;

@@ -1,7 +1,6 @@
 package com.microservice.emazon.infrastructure.output.adapter;
 
 import com.microservice.emazon.domain.model.Category;
-import com.microservice.emazon.infrastructure.exeptions.CategoryException;
 import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import com.microservice.emazon.infrastructure.output.mapper.ICategoryEntityMapper;
 import com.microservice.emazon.infrastructure.output.repository.ICategoryRepository;
@@ -11,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,12 +48,8 @@ class CategoryJpaAdapterTest {
         assertEquals(categories, result);
     }
 
-    @Test
-    void getAllCategories_ThrowsExceptionWhenNoCategories() {
-        when(categoryRepository.findAll()).thenReturn(Collections.emptyList());
 
-        assertThrows(CategoryException.class, () -> categoryJpaAdapter.getAllCategories());
-    }
+
 
 
     @Test
@@ -63,22 +57,16 @@ class CategoryJpaAdapterTest {
         Category category = new Category(1L, "CategoryName", "CategoryDescription");
         CategoryEntity categoryEntity = new CategoryEntity();
 
-        when(categoryRepository.existsByNameIgnoreCase(anyString())).thenReturn(false);
-        when(categoryEntityMapper.toCategoryEntity(category)).thenReturn(categoryEntity);
+        when(categoryRepository.existsByName(anyString())).thenReturn(false);
+        when(categoryEntityMapper.categoryEntityToCategory(category)).thenReturn(categoryEntity);
 
         categoryJpaAdapter.saveCategory(category);
 
         verify(categoryRepository, times(1)).save(categoryEntity);
     }
 
-    @Test
-    void saveCategory_ThrowsExceptionForExistingCategory() {
-        Category category = new Category(1L, "CategoryName", "CategoryDescription");
 
-        when(categoryRepository.existsByNameIgnoreCase(anyString())).thenReturn(true);
 
-        assertThrows(CategoryException.class, () -> categoryJpaAdapter.saveCategory(category));
-    }
 
     @Test
     void getCategory_ReturnsEmptyOptional() {

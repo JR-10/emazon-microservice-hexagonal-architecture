@@ -1,10 +1,13 @@
 package com.microservice.emazon.domain.usecase;
 
+import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.api.IBrandServicePort;
+import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.IBrandPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
+import com.microservice.emazon.domain.util.ValidationUtil;
 
 public class BrandUseCase implements IBrandServicePort {
 
@@ -16,10 +19,9 @@ public class BrandUseCase implements IBrandServicePort {
 
     @Override
     public void saveBrand(Brand brand) {
-        // revisar validacion si cumple con los croterios de aceptacion
-        // aqui es donde va la logica de negocio
-        if (brand == null) {
-            throw new NullPointerException("Brand cannot be null");
+        ValidationUtil.validateBrand(brand);
+        if (brandPersistencePort.brandExistsByName(brand.getName())) {
+            throw new CategoryExceptions.CategoryNameAlreadyExistsException(ApplicationConstants.CATEGORY_NAME_ALREADY_EXISTS_MESSAGE);
         }
         brandPersistencePort.saveBrand(brand);
     }

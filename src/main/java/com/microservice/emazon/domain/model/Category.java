@@ -1,5 +1,8 @@
 package com.microservice.emazon.domain.model;
 
+/*
+* Clase Categoria con atributos
+* */
 public class Category {
 
     private Long id;
@@ -35,4 +38,5 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

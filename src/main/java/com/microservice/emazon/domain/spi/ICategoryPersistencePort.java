@@ -6,13 +6,14 @@ import com.microservice.emazon.domain.util.PaginationUtil;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 
 /*
- * SPI - Service Provider Interface
- * Category persistence port
- * Inteferfaz definida como puerta de salida para interactuar con tecnologias externas
- * Las implementaciones concretas de estas interfaces se inyectan desde fuera del núcleo (Infraestructura)
- */
+* SPI - Service Provider Interface, definida como puerta de salida para interactuar con tecnologias externas,
+* Interfaz que se utiliza como puerta de salida para interactuar con tecnologias externas y define los métodos
+* que se utilizarán para interactuar con la entidad Category por medio de la persistencia de datos
+* */
 public interface ICategoryPersistencePort {
 
     List<Category> getAllCategories();
@@ -21,6 +22,9 @@ public interface ICategoryPersistencePort {
 
     void saveCategory(Category category);
 
-    // TODO: modificacion 6 - Se agrega el metodo getPagination a la interfaz ICategoryPersistencePort
-    Pagination<Category> getPagination(PaginationUtil paginationUtil);
+    boolean categoryExistsByName (String categoryName);
+
+    Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil);
+
+    Set<String> getCategoryNamesByIds(Set<Long> ids);
 }

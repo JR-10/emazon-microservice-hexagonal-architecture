@@ -8,5 +8,9 @@ public interface IBrandPersistencePort {
 
     void saveBrand(Brand brand);
 
+    boolean brandExistsByName(String brandName);
+
     Pagination<Brand> getAllBrands(PaginationUtil paginationUtil);
+
+    Brand getBrandById(Long brandId);
 }

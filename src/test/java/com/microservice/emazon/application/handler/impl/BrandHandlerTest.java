@@ -1,7 +1,7 @@
 package com.microservice.emazon.application.handler.impl;
 
-import com.microservice.emazon.application.dto.BrandRequestDto;
-import com.microservice.emazon.application.dto.BrandResponseDto;
+import com.microservice.emazon.application.dto.request.BrandRequestDto;
+import com.microservice.emazon.application.dto.response.BrandResponseDto;
 import com.microservice.emazon.application.mapper.IBrandDtoMapper;
 import com.microservice.emazon.domain.api.IBrandServicePort;
 import com.microservice.emazon.domain.model.Brand;
@@ -36,6 +36,7 @@ class BrandHandlerTest {
     }
 
 
+
     @Test
     void saveBrandSuccessfully() {
         BrandRequestDto brandRequestDto = new BrandRequestDto("BrandName", "BrandDescription");
@@ -48,6 +49,7 @@ class BrandHandlerTest {
 
         verify(brandServicePort, times(1)).saveBrand(any(Brand.class));
     }
+
 
     @Test
     void saveBrandThrowsExceptionWhenDtoIsNull() {

@@ -1,7 +1,7 @@
 package com.microservice.emazon.application.mapper;
 
-import com.microservice.emazon.application.dto.BrandRequestDto;
-import com.microservice.emazon.application.dto.BrandResponseDto;
+import com.microservice.emazon.application.dto.request.BrandRequestDto;
+import com.microservice.emazon.application.dto.response.BrandResponseDto;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import org.mapstruct.Mapper;

@@ -1,9 +1,10 @@
 // TODO: 3 Tentativo
 package com.microservice.emazon.infrastructure.input.rest.controller;
 
-import com.microservice.emazon.application.dto.BrandRequestDto;
-import com.microservice.emazon.application.dto.BrandResponseDto;
+import com.microservice.emazon.application.dto.request.BrandRequestDto;
+import com.microservice.emazon.application.dto.response.BrandResponseDto;
 import com.microservice.emazon.application.handler.IBrandHandler;
+import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +13,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +33,9 @@ public class BrandController {
             @ApiResponse(responseCode = "409", description = "Brand already exists", content = @Content)
     })
     @PostMapping("/addBrand")
-    public ResponseEntity<String> createBrand(@RequestBody BrandRequestDto brandRequestDto){
+    public ResponseEntity<String> createBrand(@RequestBody @Valid BrandRequestDto brandRequestDto){
         brandHandler.saveBrand(brandRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Ha creado exitosamente la marca " + brandRequestDto.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_BRAND_MESSAGE + brandRequestDto.getName());
     }
 
 
@@ -43,16 +45,14 @@ public class BrandController {
                     content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = BrandResponseDto.class)))),
             @ApiResponse(responseCode = "404", description = "No data found", content = @Content)
     })
-
-
     @GetMapping("/getAllBrands")
     public ResponseEntity<Pagination<BrandResponseDto>> getAllBrands(
-            @RequestParam(defaultValue = "0", required = false) int pageNo,
-            @RequestParam(defaultValue = "5", required = false) int pageSiz,
+            @RequestParam(defaultValue = "0", required = false) int pageNumber,
+            @RequestParam(defaultValue = "5", required = false) int pageSize,
             @RequestParam(defaultValue = "name", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     )  {
-    Pagination<BrandResponseDto> listBrandsPagination = brandHandler.getAllBrands(new PaginationUtil(pageNo, pageSiz, nameFilter, ascending));
+    Pagination<BrandResponseDto> listBrandsPagination = brandHandler.getAllBrands(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));
         return ResponseEntity.ok().body(listBrandsPagination);
     }
 
