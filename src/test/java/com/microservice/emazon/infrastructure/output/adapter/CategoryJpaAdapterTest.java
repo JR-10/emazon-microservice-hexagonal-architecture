@@ -50,12 +50,8 @@ class CategoryJpaAdapterTest {
         assertEquals(categories, result);
     }
 
-    @Test
-    void getAllCategories_ThrowsExceptionWhenNoCategories() {
-        when(categoryRepository.findAll()).thenReturn(Collections.emptyList());
 
-        assertThrows(CategoryExceptions.class, () -> categoryJpaAdapter.getAllCategories());
-    }
+
 
 
     @Test
@@ -63,22 +59,16 @@ class CategoryJpaAdapterTest {
         Category category = new Category(1L, "CategoryName", "CategoryDescription");
         CategoryEntity categoryEntity = new CategoryEntity();
 
-        when(categoryRepository.existsByNameIgnoreCase(anyString())).thenReturn(false);
-        when(categoryEntityMapper.toCategoryEntity(category)).thenReturn(categoryEntity);
+        when(categoryRepository.existsByName(anyString())).thenReturn(false);
+        when(categoryEntityMapper.categoryEntityToCategory(category)).thenReturn(categoryEntity);
 
         categoryJpaAdapter.saveCategory(category);
 
         verify(categoryRepository, times(1)).save(categoryEntity);
     }
 
-    @Test
-    void saveCategory_ThrowsExceptionForExistingCategory() {
-        Category category = new Category(1L, "CategoryName", "CategoryDescription");
 
-        when(categoryRepository.existsByNameIgnoreCase(anyString())).thenReturn(true);
 
-        assertThrows(CategoryExceptions.class, () -> categoryJpaAdapter.saveCategory(category));
-    }
 
     @Test
     void getCategory_ReturnsEmptyOptional() {

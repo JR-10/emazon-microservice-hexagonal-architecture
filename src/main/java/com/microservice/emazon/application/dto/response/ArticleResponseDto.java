@@ -1,4 +1,4 @@
-package com.microservice.emazon.application.dto;
+package com.microservice.emazon.application.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

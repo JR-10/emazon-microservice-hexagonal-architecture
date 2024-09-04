@@ -59,17 +59,21 @@ public class HandlerExceptionController {
     }
 
 
+    /*
+    * Metodo que maneja la excepcion dew que el nombre de la marca ya existe
+    * */
     @ExceptionHandler(BrandExceptions.BrandNameAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> inCaseThrowingBrandException(Exception e){
+    public ResponseEntity<ErrorResponse> handleBrandNameAlreadyExistsException(BrandExceptions.BrandNameAlreadyExistsException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
     }
 
 
-    @ExceptionHandler(ArticleException.class)
-    public ResponseEntity<ErrorResponse> inCaseThrowingArticleException(Exception e){
+    /*
+    * Metodo que maneja que el nombre del articulo ya existe
+    * */
+    @ExceptionHandler(ArticleException.ArticleNameAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleArticleNameAlreadyExistsException(Exception e){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse( HttpStatus.BAD_REQUEST.value(), e.getMessage()));
     }
-
-
 
 }

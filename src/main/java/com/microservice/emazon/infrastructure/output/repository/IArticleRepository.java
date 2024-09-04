@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IArticleRepository extends JpaRepository<ArticleEntity, Long> {
 
-    boolean existsByNameIgnoreCase(String name);
+    boolean existsByName(String name);
 
 }

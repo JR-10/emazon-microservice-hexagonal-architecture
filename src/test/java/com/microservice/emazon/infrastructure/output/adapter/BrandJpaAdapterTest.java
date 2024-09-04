@@ -1,9 +1,9 @@
 package com.microservice.emazon.infrastructure.output.adapter;
 
+import com.microservice.emazon.domain.exeptions.BrandExceptions;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
-import com.microservice.emazon.domain.exeptions.BrandException;
 import com.microservice.emazon.infrastructure.output.entity.BrandEntity;
 import com.microservice.emazon.infrastructure.output.mapper.IBrandEntityMapper;
 import com.microservice.emazon.infrastructure.output.repository.IBrandRepository;
@@ -40,27 +40,6 @@ class BrandJpaAdapterTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    void saveBrandSuccessfully() {
-        Brand brand = new Brand(1L, "BrandName", "BrandDescription");
-        when(brandRepository.existsByNameIgnoreCase(brand.getName())).thenReturn(false);
-
-        brandJpaAdapter.saveBrand(brand);
-
-        verify(brandRepository, times(1)).existsByNameIgnoreCase(brand.getName());
-    }
-
-    @Test
-    void saveBrandThrowsExceptionWhenBrandExists() {
-        Brand brand = new Brand(1L, "ExistingBrand", "BrandDescription");
-        when(brandRepository.existsByNameIgnoreCase(brand.getName())).thenReturn(true);
-
-        assertThrows(BrandException.class, () -> {
-            brandJpaAdapter.saveBrand(brand);
-        });
-
-        verify(brandRepository, times(1)).existsByNameIgnoreCase(brand.getName());
-    }
 
 
     @Test

@@ -1,9 +1,11 @@
 package com.microservice.emazon.domain.usecase;
 
+import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.api.IArticleServicePort;
 import com.microservice.emazon.domain.model.Article;
 import com.microservice.emazon.domain.spi.IArticlePersistencePort;
 import com.microservice.emazon.domain.exeptions.ArticleException;
+import com.microservice.emazon.domain.util.ValidationUtil;
 
 
 public class ArticleUseCase implements IArticleServicePort {
@@ -16,8 +18,9 @@ public class ArticleUseCase implements IArticleServicePort {
 
     @Override
     public void saveArticle(Article article) {
-        if(article.getBrandId() == null){
-            throw new ArticleException("Brand cannot be null");
+        ValidationUtil.validateArticle(article);
+        if (articlePersistencePort.articleExistsByName(article.getName())) {
+            throw new ArticleException.ArticleNameAlreadyExistsException(ApplicationConstants.ARTICLE_NAME_ALREADY_EXISTS_MESSAGE);
         }
         articlePersistencePort.saveArticle(article);
     }

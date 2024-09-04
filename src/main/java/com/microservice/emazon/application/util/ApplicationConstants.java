@@ -49,4 +49,9 @@ public class ApplicationConstants {
     public static final String CATEGORY_ID_LENGTH_MESSAGE = "Category IDs must be between " + CATEGORY_ID_MIN_LENGTH + " and "+CATEGORY_ID_MAX_LENGTH;
     public static final String CATEGORY_ID_UNIQUE_MESSAGE = "Category IDs must be unique";
 
+    public static final String ARTICLE_NAME_ALREADY_EXISTS_MESSAGE = "The article name already exists";
+    public static final String ARTICLE_NAME_CANNOT_BE_EMPTY_MESSAGE = "The article name cannot be empty or null";
+    public static final String ARTICLE_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE = "The article description cannot be empty or null";
+    public static final String SUCCESS_CREATED_ARTICLE_MESSAGE = "You have successfully created the article ";
 }
+

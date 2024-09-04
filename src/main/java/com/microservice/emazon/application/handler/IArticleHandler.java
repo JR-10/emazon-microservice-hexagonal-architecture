@@ -1,6 +1,6 @@
 package com.microservice.emazon.application.handler;
 
-import com.microservice.emazon.application.dto.ArticleRequestDto;
+import com.microservice.emazon.application.dto.request.ArticleRequestDto;
 
 public interface IArticleHandler {
 

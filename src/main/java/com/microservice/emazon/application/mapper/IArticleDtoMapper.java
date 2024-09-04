@@ -1,6 +1,6 @@
 package com.microservice.emazon.application.mapper;
 
-import com.microservice.emazon.application.dto.ArticleRequestDto;
+import com.microservice.emazon.application.dto.request.ArticleRequestDto;
 import com.microservice.emazon.domain.model.Article;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

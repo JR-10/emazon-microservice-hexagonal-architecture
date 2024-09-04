@@ -1,6 +1,6 @@
 package com.microservice.emazon.application.handler.impl;
 
-import com.microservice.emazon.application.dto.ArticleRequestDto;
+import com.microservice.emazon.application.dto.request.ArticleRequestDto;
 import com.microservice.emazon.application.handler.IArticleHandler;
 import com.microservice.emazon.application.mapper.IArticleDtoMapper;
 import com.microservice.emazon.domain.api.IArticleServicePort;

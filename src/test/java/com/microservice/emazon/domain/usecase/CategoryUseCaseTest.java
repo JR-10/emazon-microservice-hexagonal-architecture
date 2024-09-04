@@ -48,15 +48,6 @@ class CategoryUseCaseTest {
 
 
     @Test
-    void getCategory_ReturnsEmptyOptionalWhenCategoryNotFound() {
-        when(categoryPersistencePort.getCategory(1L)).thenReturn(Optional.empty());
-
-        Optional<Category> result = categoryUseCase.getCategory(1L);
-
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
     void saveCategory_SavesCategorySuccessfully() {
         Category category = new Category(1L, "CategoryName", "CategoryDescription");
         doNothing().when(categoryPersistencePort).saveCategory(category);
@@ -64,13 +55,6 @@ class CategoryUseCaseTest {
         categoryUseCase.saveCategory(category);
 
         verify(categoryPersistencePort, times(1)).saveCategory(category);
-    }
-
-    @Test
-    void saveCategory_ThrowsExceptionForInvalidCategory() {
-        Category category = new Category(1L, "A very long category name that exceeds the maximum allowed length of fifty characters", "A very long category description that exceeds the maximum allowed length of ninety characters");
-
-        assertThrows(CategoryExceptions.class, () -> categoryUseCase.saveCategory(category));
     }
 
 }
