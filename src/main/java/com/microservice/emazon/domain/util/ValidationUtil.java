@@ -43,13 +43,13 @@ public class ValidationUtil {
     }
 
     public static void validateArticle(Article article) {
-        if (article.getName() == null || article.getName().isEmpty()) {
+        if (article.getNameArticle() == null || article.getNameArticle().isEmpty()) {
             throw new IllegalArgumentException(ApplicationConstants.ARTICLE_NAME_CANNOT_BE_EMPTY_MESSAGE);
         }
         if (article.getDescription() == null || article.getDescription().isEmpty()) {
             throw new IllegalArgumentException(ApplicationConstants.ARTICLE_DESCRIPTION_CANNOT_BE_EMPTY_MESSAGE);
         }
-        if (article.getName().length() >  ApplicationConstants.NAME_MAX_LENGTH) {
+        if (article.getNameArticle().length() >  ApplicationConstants.NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(ApplicationConstants.NAME_BRAND_LENGTH_MESSAGE);
         }
         if (article.getDescription().length() > ApplicationConstants.DESCRIPTION_ARTICLE_MAX_LENGTH) {

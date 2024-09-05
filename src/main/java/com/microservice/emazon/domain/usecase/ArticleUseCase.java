@@ -15,7 +15,6 @@ import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
 import com.microservice.emazon.domain.util.ValidationUtil;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -35,11 +34,11 @@ public class ArticleUseCase implements IArticleServicePort {
     public void saveArticle(Article article) {
         ValidationUtil.validateArticle(article); // se aplica validaciones al articulo
         // se verifica si el articulo ya existe, si es asi se lanza una excepcion
-        if (articlePersistencePort.articleExistsByName(article.getName())) {
+        if (articlePersistencePort.articleExistsByNameArticle(article.getNameArticle())) {
             throw new ArticleException.ArticleNameAlreadyExistsException(ApplicationConstants.ARTICLE_NAME_ALREADY_EXISTS_MESSAGE);
         }
 
-        // se obtiene la marca del articulo por medio del id
+        // se obtiene la marca del articulo por medio del id, valida si la marca existe
         Brand brand = brandPersistencePort.getBrandById(article.getBrandId());
         if (brand == null) {
             throw new BrandExceptions.BrandNotFoundException(ApplicationConstants.BRAND_NOT_FOUND_MESSAGE);
@@ -63,9 +62,6 @@ public class ArticleUseCase implements IArticleServicePort {
         if(categoryNames.size() != categories.size()) {
             throw new CategoryExceptions.CategoryNotFoundException(ApplicationConstants.CATEGORY_NOT_FOUND_MESSAGE);
         }
-
-
-
 
         articlePersistencePort.saveArticle(article);
     }

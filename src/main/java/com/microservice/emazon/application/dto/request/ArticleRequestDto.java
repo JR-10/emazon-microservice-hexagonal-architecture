@@ -26,7 +26,7 @@ public class ArticleRequestDto {
             min = NAME_MIN_LENGTH,
             max = NAME_MAX_LENGTH,
             message = NAME_ARTICLE_LENGTH_MESSAGE)
-    private String name;
+    private String nameArticle;
 
     @NotNull(message = DESCRIPTION_NOT_NULL)
     @NotBlank(message = DESCRIPTION_ARTICLE_REQUIRED_MESSAGE)

@@ -22,8 +22,8 @@ public class ArticleEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name_article")
+    private String nameArticle;
 
     @Column(name = "description")
     private String description;
