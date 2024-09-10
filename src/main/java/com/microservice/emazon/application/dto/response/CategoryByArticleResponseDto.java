@@ -10,6 +10,6 @@ import lombok.*;
 public class CategoryByArticleResponseDto {
 
     private Long id;
-    private String name;
+    private String nameCategory;
 
 }

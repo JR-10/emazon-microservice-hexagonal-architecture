@@ -41,7 +41,7 @@ public class CategoryUseCase  implements ICategoryServicePort {
     @Override
     public void saveCategory(Category category) {
         ValidationUtil.validateCategory(category);
-        if (categoryPersistencePort.categoryExistsByName(category.getName())) {
+        if (categoryPersistencePort.categoryExistsByName(category.getNameCategory())) {
             throw new CategoryExceptions.CategoryNameAlreadyExistsException(ApplicationConstants.CATEGORY_NAME_ALREADY_EXISTS_MESSAGE);
         }
         categoryPersistencePort.saveCategory(category);
@@ -51,6 +51,11 @@ public class CategoryUseCase  implements ICategoryServicePort {
     @Override
     public Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil) {
         return categoryPersistencePort.getAllCategoriesPagination(paginationUtil);
+    }
+
+    @Override
+    public List<Category> getAllByProduct(Long idProduct) {
+        return categoryPersistencePort.getAllByArticle(idProduct);
     }
 
 }

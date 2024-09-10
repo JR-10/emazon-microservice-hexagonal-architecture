@@ -56,7 +56,7 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     * */
     @Override
     public boolean categoryExistsByName(String categoryName) {
-        return categoryRepository.existsByName(categoryName);
+        return categoryRepository.findByNameCategory(categoryName).isPresent();
     }
 
 
@@ -80,10 +80,35 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         );
     }
 
+
+
+
+    /*
+    * Metodo que obtiene los nombres de las categorias por medio de los ids de las categorias
+    * */
+    /*
     @Override
     public Set<String> getCategoryNamesByIds(Set<Long> idsCategories) {
         return categoryRepository.findAllById(idsCategories).stream() // se obtienen las categorias por medio de los ids desde la base de datos
-                .map(CategoryEntity::getName) // se mapea el nombre de la categoria
+                .map(CategoryEntity::getNameCategory) // se mapea el nombre de la categoria
                 .collect(Collectors.toSet()); // se convierte el stream a un set
+    }
+    */
+
+
+    @Override
+    public List<String> getCategoryNamesByIds(List<Long> ids) {
+        return categoryRepository.findAllById(ids).stream()
+                .map(CategoryEntity::getNameCategory)
+                .collect(Collectors.toList());
+    }
+
+    /*
+    * Metodo que obtiene todas las categorias por medio del id del articulo
+    * */
+    @Override
+    public List<Category> getAllByArticle(Long idArticle) {
+        List<CategoryEntity> categories = categoryRepository.findCategoriesByArticleId(idArticle); // se obtienen las categorias por medio del id del articulo desde la base de datos
+        return categoryEntityMapper.toCategoryList(categories); // se mapean las categorias obtenidas a una lista de categorias de tipo Category de dominio
     }
 }

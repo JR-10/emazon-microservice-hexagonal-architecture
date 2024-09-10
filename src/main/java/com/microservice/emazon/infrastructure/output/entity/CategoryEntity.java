@@ -3,6 +3,7 @@ package com.microservice.emazon.infrastructure.output.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -19,14 +20,15 @@ public class CategoryEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name_category")
+    private String nameCategory;
 
     @Column(name = "description")
     private String description;
 
 
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
-    private Set<ArticleEntity> articles;
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    // private Set<ArticleEntity> articles;
+    private List<ArticleEntity> articles;
 
 }

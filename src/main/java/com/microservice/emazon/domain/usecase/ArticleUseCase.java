@@ -15,6 +15,7 @@ import com.microservice.emazon.domain.spi.ICategoryPersistencePort;
 import com.microservice.emazon.domain.util.PaginationUtil;
 import com.microservice.emazon.domain.util.ValidationUtil;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -44,8 +45,11 @@ public class ArticleUseCase implements IArticleServicePort {
             throw new BrandExceptions.BrandNotFoundException(ApplicationConstants.BRAND_NOT_FOUND_MESSAGE);
         }
 
-        Set<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
-        Set<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
+        // Set<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
+        List<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
+
+        // Set<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
+        List<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
 
         System.out.println("categories del articulo a crear: " + categories);
         System.out.println("categoryNames obtenidas por medio de los ids: " + categoryNames);

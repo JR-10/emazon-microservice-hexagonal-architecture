@@ -1,9 +1,9 @@
 package com.microservice.emazon.domain.util;
 
 public enum OrderingBy {
-    ARTICLE_NAME("articleName"),
-    BRAND_NAME("brandName"),
-    NUMBER_OF_CATEGORIES("numberOfCategories");
+    ARTICLE_NAME("nameArticle"),
+    BRAND_NAME("nameBrand"),
+    NUMBER_OF_CATEGORIES("numCategories");
 
     private final String fieldName;
 

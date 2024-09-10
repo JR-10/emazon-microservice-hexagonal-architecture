@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -25,12 +26,13 @@ public class BrandJpaAdapter  implements IBrandPersistencePort {
 
     @Override
     public void saveBrand(Brand brand) {
-        brandRepository.save(brandEntityMapper.toBrandEntity(brand));
+        BrandEntity brandEntity = brandEntityMapper.toBrandEntity(brand);
+        brandRepository.save(brandEntity);
     }
 
     @Override
     public boolean brandExistsByName(String brandName) {
-        return brandRepository.existsByName(brandName);
+        return brandRepository.findByNameBrand(brandName).isPresent();
     }
 
     @Override
@@ -50,8 +52,7 @@ public class BrandJpaAdapter  implements IBrandPersistencePort {
 
     @Override
     public Brand getBrandById(Long brandId) {
-        return brandRepository.findById(brandId)
-                .map(brandEntityMapper::toBrand)
-                .orElse(null);
+        Optional<BrandEntity> brandEntityOptional = brandRepository.findById(brandId);
+        return brandEntityOptional.map(brandEntityMapper::toBrand).orElse(null);
     }
 }

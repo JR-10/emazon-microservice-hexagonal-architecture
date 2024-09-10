@@ -6,12 +6,12 @@ package com.microservice.emazon.domain.model;
 public class Category {
 
     private Long id;
-    private String name;
+    private String nameCategory;
     private String description;
 
-    public Category(Long id, String name, String description) {
+    public Category(Long id, String nameCategory, String description) {
         this.id = id;
-        this.name = name;
+        this.nameCategory = nameCategory;
         this.description = description;
     }
 
@@ -23,12 +23,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCategory() {
+        return nameCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
     }
 
     public String getDescription() {

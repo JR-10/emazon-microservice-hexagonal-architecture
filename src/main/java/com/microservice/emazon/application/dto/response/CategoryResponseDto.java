@@ -10,7 +10,7 @@ import lombok.*;
 public class CategoryResponseDto {
 
     private Long id;
-    private String name;
+    private String nameCategory;
     private String description;
 
 }

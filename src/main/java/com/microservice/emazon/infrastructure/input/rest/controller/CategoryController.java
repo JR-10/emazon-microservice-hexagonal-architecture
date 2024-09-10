@@ -1,6 +1,8 @@
 package com.microservice.emazon.infrastructure.input.rest.controller;
 
 import com.microservice.emazon.application.dto.request.CategoryRequestDto;
+import com.microservice.emazon.application.dto.response.ArticleResponseDto;
+import com.microservice.emazon.application.dto.response.BrandResponseDto;
 import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.application.handler.ICategoryHandler;
 import com.microservice.emazon.application.util.ApplicationConstants;
@@ -58,18 +60,24 @@ public class CategoryController {
     @PostMapping("/addCategory")
     public ResponseEntity<String> createCategory(@RequestBody @Valid CategoryRequestDto categoryRequestDto) {
         categoryHandler.saveCategory(categoryRequestDto);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_CATEGORY_MESSAGE + categoryRequestDto.getName());
+        return  ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_CATEGORY_MESSAGE + categoryRequestDto.getNameCategory());
     }
 
 
     /*
     * Metodo para obtener las categorías paginadas
     * */
+    @Operation(summary = "Get all the articles")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All articles returned",
+                    content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ArticleResponseDto.class)))),
+            @ApiResponse(responseCode = "404", description = "No data found", content = @Content)
+    })
     @GetMapping("/getAllCategoriesPagination")
     public ResponseEntity<Pagination<CategoryResponseDto>> getPagination(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,
-            @RequestParam(defaultValue = "name", required = false) String nameFilter,
+            @RequestParam(defaultValue = "nameCategory", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     )  {
     Pagination<CategoryResponseDto> listpagination = categoryHandler.getAllCategoriesPagination(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));

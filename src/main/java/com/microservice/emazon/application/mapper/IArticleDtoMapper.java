@@ -16,5 +16,7 @@ public interface IArticleDtoMapper {
 
     Pagination<ArticleResponseDto> paginationArticleToArticleResponseDto(Pagination<Article> pagination);
 
+    ArticleResponseDto articleToArticleDto(Article article);
+
 }
 

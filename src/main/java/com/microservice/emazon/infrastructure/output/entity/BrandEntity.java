@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "brand_tbl")
@@ -20,10 +22,12 @@ public class BrandEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name_brand")
+    private String nameBrand;
 
     @Column(name = "description")
     private String description;
 
+    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
+    private List<ArticleEntity> articles;
 }

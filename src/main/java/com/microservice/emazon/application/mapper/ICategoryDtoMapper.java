@@ -1,6 +1,7 @@
 package com.microservice.emazon.application.mapper;
 
 import com.microservice.emazon.application.dto.request.CategoryRequestDto;
+import com.microservice.emazon.application.dto.response.CategoryByArticleResponseDto;
 import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.domain.model.Pagination;
@@ -48,6 +49,12 @@ public interface ICategoryDtoMapper {
      * @return Pagination<CategoryResponseDto>
      */
     Pagination<CategoryResponseDto> paginationToCategoryResponseDto(Pagination<Category> pagination);
+
+
+
+    // ejemplo
+    List<CategoryByArticleResponseDto> categoryListToCategoryByArticleDtoList(List<Category> categories);
+
 
 
 }

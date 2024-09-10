@@ -4,10 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.microservice.emazon.infrastructure.output.entity.BrandEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 public interface IBrandRepository extends JpaRepository<BrandEntity, Long> {
 
-    boolean existsByName(String brandName);
-
+    Optional<BrandEntity> findByNameBrand(String name);
 }

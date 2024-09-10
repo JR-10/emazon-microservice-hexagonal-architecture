@@ -12,7 +12,7 @@ import lombok.Setter;
 public class BrandResponseDto {
 
     private Long id;
-    private String name;
+    private String nameBrand;
     private String description;
 
 }

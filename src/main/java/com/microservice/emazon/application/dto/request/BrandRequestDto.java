@@ -23,7 +23,7 @@ public class BrandRequestDto {
             min = NAME_MIN_LENGTH,
             max = NAME_MAX_LENGTH,
             message = NAME_BRAND_LENGTH_MESSAGE)
-    private String name;
+    private String nameBrand;
 
     @NotNull(message = DESCRIPTION_NOT_NULL)
     @NotBlank(message = DESCRIPTION_BRAND_REQUIRED_MESSAGE)

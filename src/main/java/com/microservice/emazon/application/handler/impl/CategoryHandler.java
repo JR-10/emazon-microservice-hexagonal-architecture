@@ -1,6 +1,7 @@
 package com.microservice.emazon.application.handler.impl;
 
 import com.microservice.emazon.application.dto.request.CategoryRequestDto;
+import com.microservice.emazon.application.dto.response.CategoryByArticleResponseDto;
 import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.application.handler.ICategoryHandler;
 import com.microservice.emazon.application.mapper.ICategoryDtoMapper;
@@ -50,5 +51,11 @@ public class CategoryHandler implements ICategoryHandler {
     public Pagination<CategoryResponseDto> getAllCategoriesPagination(PaginationUtil paginationUtil) {
         return categoryMapper.paginationToCategoryResponseDto(categoryServicePort.getAllCategoriesPagination(paginationUtil));
     }
+
+    @Override
+    public List<CategoryByArticleResponseDto> getAllCategoriesByArticleId(Long articleId) {
+        return categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByProduct(articleId));
+    }
+
 
 }

@@ -42,7 +42,7 @@ public class ArticleController {
     public ResponseEntity<Pagination<ArticleResponseDto>> getArticlesByParameters(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,
-            @RequestParam(defaultValue = "name", required = false) String nameFilter,
+            @RequestParam(defaultValue = "nameArticle", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     ){
         Pagination<ArticleResponseDto> listArticlePagination = articleHandler.getArticlesByParameters(

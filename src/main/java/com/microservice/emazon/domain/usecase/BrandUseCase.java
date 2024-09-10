@@ -20,7 +20,7 @@ public class BrandUseCase implements IBrandServicePort {
     @Override
     public void saveBrand(Brand brand) {
         ValidationUtil.validateBrand(brand);
-        if (brandPersistencePort.brandExistsByName(brand.getName())) {
+        if (brandPersistencePort.brandExistsByName(brand.getNameBrand())) {
             throw new CategoryExceptions.CategoryNameAlreadyExistsException(ApplicationConstants.CATEGORY_NAME_ALREADY_EXISTS_MESSAGE);
         }
         brandPersistencePort.saveBrand(brand);
@@ -29,5 +29,10 @@ public class BrandUseCase implements IBrandServicePort {
     @Override
     public Pagination<Brand> getAllBrands(PaginationUtil paginationUtil) {
         return brandPersistencePort.getAllBrands(paginationUtil);
+    }
+
+    @Override
+    public Brand getBrandById(Long brandId) {
+        return brandPersistencePort.getBrandById(brandId);
     }
 }

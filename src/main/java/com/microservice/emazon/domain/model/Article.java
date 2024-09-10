@@ -1,5 +1,6 @@
 package com.microservice.emazon.domain.model;
 
+import java.util.List;
 import java.util.Set;
 
 public class Article {
@@ -10,12 +11,13 @@ public class Article {
     private Long quantity;
     private Double price;
     private Long brandId;
-    private Set<Long> categoryIds;
+    // private Set<Long> categoryIds;
+    private List<Long> categoryIds;
 
     public Article() {
     }
 
-    public Article(Long id, String nameArticle, String description, Long quantity, Double price, Long brandId, Set<Long> categoryIds) {
+    public Article(Long id, String nameArticle, String description, Long quantity, Double price, Long brandId, /*Set<Long> categoryIds*/ List<Long> categoryIds) {
         this.id = id;
         this.nameArticle = nameArticle;
         this.description = description;
@@ -73,11 +75,21 @@ public class Article {
         this.brandId = brandId;
     }
 
+    /*
     public Set<Long> getCategoryIds() {
         return categoryIds;
     }
 
     public void setCategoryIds(Set<Long> categoryIds) {
+        this.categoryIds = categoryIds;
+    }
+    */
+
+    public List<Long> getCategoryIds() {
+        return categoryIds;
+    }
+
+    public void setCategoryIds(List<Long> categoryIds) {
         this.categoryIds = categoryIds;
     }
 }

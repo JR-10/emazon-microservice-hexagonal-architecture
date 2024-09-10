@@ -41,44 +41,32 @@ public class ArticleJpaAdapter implements IArticlePersistencePort {
         PageRequest pageRequest = PageRequest.of(paginationUtil.getPageNumber(), paginationUtil.getPageSize()); // objeto de jpa que contiene la paginacion
         Page<ArticleEntity> ArticlePage = null; // de tipo Page que contiene la lista de articulos de entidad de ArticleEntity
 
-        System.out.println("Valor de paginationUtil.getNameFilter() = " + paginationUtil.getNameFilter());
-
-        return null;
-
-        /*
+        // validamos el filtro de ordenamiento para saber por que campo se va a ordenar
         if (OrderingBy.BRAND_NAME.getFieldName().equals(paginationUtil.getNameFilter())) { // si el filtro es por nombre de marca
-            ArticlePage = paginationUtil.isAscending() ? articleRepository.findAllOrderingByBrandNameAsc(pageRequest) : articleRepository.findAllOrderingByBrandNameDesc(pageRequest);
+            ArticlePage = paginationUtil.isAscending()
+                    ? articleRepository.findAllOrderingByBrandNameAsc(pageRequest)
+                    : articleRepository.findAllOrderingByBrandNameDesc(pageRequest);
         } else if (OrderingBy.NUMBER_OF_CATEGORIES.getFieldName().equals(paginationUtil.getNameFilter())) { // si el filtro es por numero de categorias
-            ArticlePage = paginationUtil.isAscending() ? articleRepository.findAllOrderingByNumberOfCategoriesAsc(pageRequest) : articleRepository.findAllOrderingByNumberOfCategoriesDesc(pageRequest);
+            ArticlePage = paginationUtil.isAscending()
+                    ? articleRepository.findAllOrderingByNumberOfCategoriesAsc(pageRequest)
+                    : articleRepository.findAllOrderingByNumberOfCategoriesDesc(pageRequest);
         } else if (OrderingBy.ARTICLE_NAME.getFieldName().equals(paginationUtil.getNameFilter())) { // si el filtro es por nombre de articulo
-            ArticlePage = paginationUtil.isAscending() ? articleRepository.findAllOrderingByArticleNameAsc(pageRequest) : articleRepository.findAllOrderingByArticleNameDesc(pageRequest);
+            ArticlePage = paginationUtil.isAscending()
+                    ? articleRepository.findAllOrderingByArticleNameAsc(pageRequest)
+                    : articleRepository.findAllOrderingByArticleNameDesc(pageRequest);
         }
 
-        assert ArticlePage != null;
-        List<Article> listArticles = articleEntityMapper.articleEntityListToArticleList(ArticlePage.getContent());
-        System.out.println("Valor de listArticles = " + listArticles);
+        assert ArticlePage != null; // validamos que la pagina no sea nula
+        List<Article> products = articleEntityMapper.articleEntityListToArticleList(ArticlePage.getContent()); // mapeamos la lista de articulos de entidad a la lista de articulos de dominio
 
+        // retornamos la paginacion
         return new Pagination<>(
                 paginationUtil.isAscending(),
                 paginationUtil.getPageNumber(),
                 ArticlePage.getTotalPages(),
                 ArticlePage.getTotalElements(),
-                listArticles
+                products
         );
-        */
 
-
-        /*
-        Sort.Direction sortDirection = paginationUtil.isAscending()? Sort.Direction.ASC : Sort.Direction.DESC;
-        PageRequest pageArticleRequest = PageRequest.of(paginationUtil.getPageNumber(), paginationUtil.getPageSize(), Sort.by(sortDirection, paginationUtil.getNameFilter()));
-        Page<ArticleEntity> articlesPage = articleRepository.findAll(pageArticleRequest);
-        List<Article> articles = articleEntityMapper.articleEntityListToArticleList(articlesPage.getContent());
-        return new Pagination<>(
-                paginationUtil.isAscending(),
-                paginationUtil.getPageNumber(),
-                articlesPage.getTotalPages(),
-                articlesPage.getTotalElements(),
-                articles
-        );*/
     }
 }
