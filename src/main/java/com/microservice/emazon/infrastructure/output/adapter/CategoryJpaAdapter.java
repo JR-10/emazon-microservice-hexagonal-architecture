@@ -96,6 +96,9 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     */
 
 
+    /*
+    * Metodo que obtiene los nombres de las categorias por medio de los ids de las categorias
+    * */
     @Override
     public List<String> getCategoryNamesByIds(List<Long> ids) {
         return categoryRepository.findAllById(ids).stream()

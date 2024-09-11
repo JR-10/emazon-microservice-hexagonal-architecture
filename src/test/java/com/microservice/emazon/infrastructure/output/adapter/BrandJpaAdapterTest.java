@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -86,6 +87,66 @@ class BrandJpaAdapterTest {
         assertThrows(IllegalArgumentException.class, () -> {
             brandJpaAdapter.getAllBrands(paginationUtil);
         });
+    }
+
+
+    @Test
+    void saveBrandSuccessfully() {
+        Brand brand = new Brand(1L, "BrandName", "BrandDescription");
+        BrandEntity brandEntity = new BrandEntity(1L, "BrandName", "BrandDescription", List.of());
+
+        when(brandEntityMapper.toBrandEntity(brand)).thenReturn(brandEntity);
+
+        brandJpaAdapter.saveBrand(brand);
+
+        verify(brandRepository, times(1)).save(brandEntity);
+    }
+
+
+    @Test
+    void brandExistsByName_ReturnsTrueWhenBrandExists() {
+        String brandName = "ExistingBrand";
+        when(brandRepository.findByNameBrand(brandName)).thenReturn(Optional.of(new BrandEntity()));
+
+        boolean result = brandJpaAdapter.brandExistsByName(brandName);
+
+        assertTrue(result);
+    }
+
+    @Test
+    void brandExistsByName_ReturnsFalseWhenBrandDoesNotExist() {
+        String brandName = "NonExistingBrand";
+        when(brandRepository.findByNameBrand(brandName)).thenReturn(Optional.empty());
+
+        boolean result = brandJpaAdapter.brandExistsByName(brandName);
+
+        assertFalse(result);
+    }
+
+
+    @Test
+    void getBrandById_ReturnsBrandWhenIdExists() {
+        Long brandId = 1L;
+        BrandEntity brandEntity = new BrandEntity(brandId, "BrandName", "BrandDescription", List.of());
+        Brand expectedBrand = new Brand(brandId, "BrandName", "BrandDescription");
+
+        when(brandRepository.findById(brandId)).thenReturn(Optional.of(brandEntity));
+        when(brandEntityMapper.toBrand(brandEntity)).thenReturn(expectedBrand);
+
+        Brand result = brandJpaAdapter.getBrandById(brandId);
+
+        assertEquals(expectedBrand, result);
+    }
+
+    @Test
+    void getBrandById_ReturnsNullWhenIdDoesNotExist() {
+        Long brandId = 1L;
+
+        when(brandRepository.findById(brandId)).thenReturn(Optional.empty());
+
+        Brand result = brandJpaAdapter.getBrandById(brandId);
+
+        assertNull(result);
     }
 
 

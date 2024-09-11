@@ -51,9 +51,6 @@ public class ArticleUseCase implements IArticleServicePort {
         // Set<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
         List<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
 
-        System.out.println("categories del articulo a crear: " + categories);
-        System.out.println("categoryNames obtenidas por medio de los ids: " + categoryNames);
-
         // se verifica si las categorias existen en la tabla de categorias
         if (categoryNames.isEmpty()) {
             throw new CategoryExceptions.CategoryNotFoundException(ApplicationConstants.CATEGORY_NOT_FOUND_MESSAGE);

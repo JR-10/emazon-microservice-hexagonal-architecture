@@ -5,6 +5,8 @@ import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.application.mapper.ICategoryDtoMapper;
 import com.microservice.emazon.domain.api.ICategoryServicePort;
 import com.microservice.emazon.domain.model.Category;
+import com.microservice.emazon.domain.model.Pagination;
+import com.microservice.emazon.domain.util.PaginationUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

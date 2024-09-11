@@ -23,7 +23,6 @@ public class ArticleJpaAdapter implements IArticlePersistencePort {
 
     private final IArticleEntityMapper articleEntityMapper;
     private final IArticleRepository articleRepository;
-    private final IBrandRepository brandRepository;
 
     @Override
     public void saveArticle(Article article) {

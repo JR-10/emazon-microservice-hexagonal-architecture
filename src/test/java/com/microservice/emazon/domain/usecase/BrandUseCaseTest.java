@@ -1,5 +1,7 @@
 package com.microservice.emazon.domain.usecase;
 
+import com.microservice.emazon.domain.exceptions.BrandExceptions;
+import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.spi.IBrandPersistencePort;
@@ -89,4 +91,18 @@ class BrandUseCaseTest {
         });
         verify(brandPersistencePort, times(1)).getAllBrands(paginationUtil);
     }
+
+
+    @Test
+    void getBrandById_ReturnsBrandSuccessfully() {
+        Long brandId = 1L;
+        Brand expectedBrand = new Brand(brandId, "BrandName", "BrandDescription");
+        when(brandPersistencePort.getBrandById(brandId)).thenReturn(expectedBrand);
+
+        Brand result = brandUseCase.getBrandById(brandId);
+
+        assertEquals(expectedBrand, result);
+    }
+
+
 }

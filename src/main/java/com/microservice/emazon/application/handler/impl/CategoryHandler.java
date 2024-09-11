@@ -52,6 +52,9 @@ public class CategoryHandler implements ICategoryHandler {
         return categoryMapper.paginationToCategoryResponseDto(categoryServicePort.getAllCategoriesPagination(paginationUtil));
     }
 
+    /*
+    * Metodo para obtener todas las categorías por id de artículo desde el puerto de servicio de categoría
+    * */
     @Override
     public List<CategoryByArticleResponseDto> getAllCategoriesByArticleId(Long articleId) {
         return categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByProduct(articleId));
