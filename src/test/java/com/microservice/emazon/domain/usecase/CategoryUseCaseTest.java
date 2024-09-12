@@ -82,23 +82,23 @@ class CategoryUseCaseTest {
 
 
     @Test
-    void getAllByProduct_ReturnsCategoryList() {
-        Long productId = 1L;
+    void getAllByArticle_ReturnsCategoryList() {
+        Long articleId = 1L;
         List<Category> categories = List.of(new Category(1L, "CategoryName", "CategoryDescription"));
-        when(categoryPersistencePort.getAllByArticle(productId)).thenReturn(categories);
+        when(categoryPersistencePort.getAllByArticle(articleId)).thenReturn(categories);
 
-        List<Category> result = categoryUseCase.getAllByProduct(productId);
+        List<Category> result = categoryUseCase.getAllByArticle(articleId);
 
         assertEquals(categories, result);
     }
 
     @Test
-    void getAllByProduct_ReturnsEmptyList() {
-        Long productId = 1L;
+    void getAllByArticle_ReturnsEmptyList() {
+        Long articleId = 1L;
         List<Category> categories = List.of();
-        when(categoryPersistencePort.getAllByArticle(productId)).thenReturn(categories);
+        when(categoryPersistencePort.getAllByArticle(articleId)).thenReturn(categories);
 
-        List<Category> result = categoryUseCase.getAllByProduct(productId);
+        List<Category> result = categoryUseCase.getAllByArticle(articleId);
 
         assertTrue(result.isEmpty());
     }

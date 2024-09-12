@@ -50,7 +50,7 @@ public class ArticleHandler implements IArticleHandler {
                 article -> {
                     ArticleResponseDto articleResponse = articleMapper.articleToArticleDto(article); // se mapea el articulo de dominio a articulo de respuesta
                     articleResponse.setBrand(brandMapper.brandToBrandDto(branServicePort.getBrandById(article.getBrandId()))); // se mapea la marca de dominio a marca de respuesta
-                    articleResponse.setCategories(categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByProduct(article.getId()))); // se mapea la lista de categorias de dominio a la lista de categorias de respuesta
+                    articleResponse.setCategories(categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByArticle(article.getId()))); // se mapea la lista de categorias de dominio a la lista de categorias de respuesta
                     return articleResponse; // retorna el articulo de respuesta mapeado
                 }
         ).toList(); // se convierte el stream a lista

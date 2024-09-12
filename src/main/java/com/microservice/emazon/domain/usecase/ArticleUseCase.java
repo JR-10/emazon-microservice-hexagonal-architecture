@@ -45,10 +45,8 @@ public class ArticleUseCase implements IArticleServicePort {
             throw new BrandExceptions.BrandNotFoundException(ApplicationConstants.BRAND_NOT_FOUND_MESSAGE);
         }
 
-        // Set<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
         List<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
 
-        // Set<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
         List<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
 
         // se verifica si las categorias existen en la tabla de categorias
@@ -58,7 +56,7 @@ public class ArticleUseCase implements IArticleServicePort {
 
         /*
          * Se verifica si la cantidad de categorias obtenidas es igual a la cantidad de categorias del articulo
-         * si no es asi se lanza una excepcion
+         * si no es asi se lanza la excepcion
          */
         if(categoryNames.size() != categories.size()) {
             throw new CategoryExceptions.CategoryNotFoundException(ApplicationConstants.CATEGORY_NOT_FOUND_MESSAGE);

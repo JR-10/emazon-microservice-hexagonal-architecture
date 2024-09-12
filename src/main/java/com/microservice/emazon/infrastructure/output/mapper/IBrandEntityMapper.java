@@ -4,7 +4,6 @@ import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.infrastructure.output.entity.BrandEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Named;
-import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 

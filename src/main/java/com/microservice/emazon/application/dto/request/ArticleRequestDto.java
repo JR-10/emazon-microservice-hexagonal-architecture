@@ -52,7 +52,6 @@ public class ArticleRequestDto {
             max = CATEGORY_ID_MAX_LENGTH,
             message = CATEGORY_ID_LENGTH_MESSAGE)
     @UniqueElements(message = CATEGORY_ID_UNIQUE_MESSAGE) // este es un constraint personalizado, que valida que no haya elementos repetidos en la lista
-    // private Set<Long> categoryIds;
     private List<Long> categoryIds;
 
 }

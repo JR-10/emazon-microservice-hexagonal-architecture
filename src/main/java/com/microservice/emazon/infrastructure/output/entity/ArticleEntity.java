@@ -45,7 +45,6 @@ public class ArticleEntity {
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    // private Set<CategoryEntity> categories;
     private List<CategoryEntity> categories;
 
 }

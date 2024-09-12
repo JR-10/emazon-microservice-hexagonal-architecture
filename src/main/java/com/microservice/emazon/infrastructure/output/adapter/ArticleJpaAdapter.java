@@ -56,7 +56,7 @@ public class ArticleJpaAdapter implements IArticlePersistencePort {
         }
 
         assert ArticlePage != null; // validamos que la pagina no sea nula
-        List<Article> products = articleEntityMapper.articleEntityListToArticleList(ArticlePage.getContent()); // mapeamos la lista de articulos de entidad a la lista de articulos de dominio
+        List<Article> articles = articleEntityMapper.articleEntityListToArticleList(ArticlePage.getContent()); // mapeamos la lista de articulos de entidad a la lista de articulos de dominio
 
         // retornamos la paginacion
         return new Pagination<>(
@@ -64,7 +64,7 @@ public class ArticleJpaAdapter implements IArticlePersistencePort {
                 paginationUtil.getPageNumber(),
                 ArticlePage.getTotalPages(),
                 ArticlePage.getTotalElements(),
-                products
+                articles
         );
 
     }

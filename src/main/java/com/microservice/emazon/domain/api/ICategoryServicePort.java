@@ -18,6 +18,6 @@ public interface ICategoryServicePort {
 
     Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil);
 
-    List<Category> getAllByProduct(Long idProduct);
+    List<Category> getAllByArticle(Long idArticle);
 
 }

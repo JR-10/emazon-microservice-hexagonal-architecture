@@ -57,7 +57,7 @@ public class CategoryHandler implements ICategoryHandler {
     * */
     @Override
     public List<CategoryByArticleResponseDto> getAllCategoriesByArticleId(Long articleId) {
-        return categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByProduct(articleId));
+        return categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByArticle(articleId));
     }
 
 

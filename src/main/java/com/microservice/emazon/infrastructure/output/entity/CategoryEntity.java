@@ -28,7 +28,6 @@ public class CategoryEntity {
 
 
     @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
-    // private Set<ArticleEntity> articles;
     private List<ArticleEntity> articles;
 
 }

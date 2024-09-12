@@ -54,8 +54,8 @@ public class CategoryUseCase  implements ICategoryServicePort {
     }
 
     @Override
-    public List<Category> getAllByProduct(Long idProduct) {
-        return categoryPersistencePort.getAllByArticle(idProduct);
+    public List<Category> getAllByArticle(Long idArticle) {
+        return categoryPersistencePort.getAllByArticle(idArticle);
     }
 
 }
