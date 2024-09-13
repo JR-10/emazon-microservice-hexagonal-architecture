@@ -32,7 +32,9 @@ public class ArticleController {
     @PostMapping("/addArticle")
     public ResponseEntity<String> saveArticle(@RequestBody @Valid ArticleRequestDto articleRequestDto ) {
         articleHandler.saveArticle(articleRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_ARTICLE_MESSAGE + articleRequestDto.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                ApplicationConstants.SUCCESS_CREATED_ARTICLE_MESSAGE + articleRequestDto.getNameArticle()
+        );
     }
 
 
@@ -40,10 +42,12 @@ public class ArticleController {
     public ResponseEntity<Pagination<ArticleResponseDto>> getArticlesByParameters(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,
-            @RequestParam(defaultValue = "name", required = false) String nameFilter,
+            @RequestParam(defaultValue = "nameArticle", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     ){
-        Pagination<ArticleResponseDto> listArticlePagination = articleHandler.getArticlesByParameters(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));
+        Pagination<ArticleResponseDto> listArticlePagination = articleHandler.getArticlesByParameters(
+                new PaginationUtil(pageNumber, pageSize, nameFilter, ascending)
+        );
         return ResponseEntity.ok().body(listArticlePagination);
     }
     

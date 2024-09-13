@@ -35,21 +35,19 @@ public class ArticleUseCase implements IArticleServicePort {
     public void saveArticle(Article article) {
         ValidationUtil.validateArticle(article); // se aplica validaciones al articulo
         // se verifica si el articulo ya existe, si es asi se lanza una excepcion
-        if (articlePersistencePort.articleExistsByName(article.getName())) {
+        if (articlePersistencePort.articleExistsByNameArticle(article.getNameArticle())) {
             throw new ArticleException.ArticleNameAlreadyExistsException(ApplicationConstants.ARTICLE_NAME_ALREADY_EXISTS_MESSAGE);
         }
 
-        // se obtiene la marca del articulo por medio del id
+        // se obtiene la marca del articulo por medio del id, valida si la marca existe
         Brand brand = brandPersistencePort.getBrandById(article.getBrandId());
         if (brand == null) {
             throw new BrandExceptions.BrandNotFoundException(ApplicationConstants.BRAND_NOT_FOUND_MESSAGE);
         }
 
-        Set<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
-        Set<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
+        List<Long> categories = article.getCategoryIds(); // se obtienen los ids de las categorias del articulo
 
-        System.out.println("categories del articulo a crear: " + categories);
-        System.out.println("categoryNames obtenidas por medio de los ids: " + categoryNames);
+        List<String> categoryNames = categoryPersistencePort.getCategoryNamesByIds(categories); // se obtienen los nombres de las categorias por medio de los ids
 
         // se verifica si las categorias existen en la tabla de categorias
         if (categoryNames.isEmpty()) {
@@ -58,14 +56,11 @@ public class ArticleUseCase implements IArticleServicePort {
 
         /*
          * Se verifica si la cantidad de categorias obtenidas es igual a la cantidad de categorias del articulo
-         * si no es asi se lanza una excepcion
+         * si no es asi se lanza la excepcion
          */
         if(categoryNames.size() != categories.size()) {
             throw new CategoryExceptions.CategoryNotFoundException(ApplicationConstants.CATEGORY_NOT_FOUND_MESSAGE);
         }
-
-
-
 
         articlePersistencePort.saveArticle(article);
     }

@@ -35,7 +35,7 @@ public class BrandController {
     @PostMapping("/addBrand")
     public ResponseEntity<String> createBrand(@RequestBody @Valid BrandRequestDto brandRequestDto){
         brandHandler.saveBrand(brandRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_BRAND_MESSAGE + brandRequestDto.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_BRAND_MESSAGE + brandRequestDto.getNameBrand());
     }
 
 
@@ -49,7 +49,7 @@ public class BrandController {
     public ResponseEntity<Pagination<BrandResponseDto>> getAllBrands(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,
-            @RequestParam(defaultValue = "name", required = false) String nameFilter,
+            @RequestParam(defaultValue = "nameBrand", required = false) String nameFilter,
             @RequestParam(defaultValue = "true", required = false) boolean ascending
     )  {
     Pagination<BrandResponseDto> listBrandsPagination = brandHandler.getAllBrands(new PaginationUtil(pageNumber, pageSize, nameFilter, ascending));

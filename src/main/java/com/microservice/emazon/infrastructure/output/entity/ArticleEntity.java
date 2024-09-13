@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -22,8 +23,8 @@ public class ArticleEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name_article")
+    private String nameArticle;
 
     @Column(name = "description")
     private String description;
@@ -44,6 +45,6 @@ public class ArticleEntity {
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<CategoryEntity> categories;
+    private List<CategoryEntity> categories;
 
 }

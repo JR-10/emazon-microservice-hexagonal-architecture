@@ -8,7 +8,7 @@ public interface IArticlePersistencePort {
 
     void saveArticle(Article article);
 
-    boolean articleExistsByName(String articleName);
+    boolean articleExistsByNameArticle(String articleName);
 
     Pagination<Article> getArticlesByParameters(PaginationUtil paginationUtil);
 }

@@ -1,4 +1,3 @@
-// TODO: 1 - Create a Brand class with nameBrand and descriptionBrand attributes
 package com.microservice.emazon.domain.model;
 
 import java.util.List;
@@ -6,15 +5,15 @@ import java.util.List;
 public class Brand {
 
     private Long id;
-    private String name;
+    private String nameBrand;
     private String description;
 
     public Brand() {
     }
 
-    public Brand(Long id, String name, String description) {
+    public Brand(Long id, String nameBrand, String description) {
         this.id = id;
-        this.name = name;
+        this.nameBrand = nameBrand;
         this.description = description;
     }
 
@@ -26,12 +25,12 @@ public class Brand {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameBrand() {
+        return nameBrand;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameBrand(String nameBrand) {
+        this.nameBrand = nameBrand; ;
     }
 
     public String getDescription() {

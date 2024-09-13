@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.UniqueElements;
 
 
+import java.util.List;
 import java.util.Set;
 
 import static com.microservice.emazon.application.util.ApplicationConstants.*;
@@ -26,7 +27,7 @@ public class ArticleRequestDto {
             min = NAME_MIN_LENGTH,
             max = NAME_MAX_LENGTH,
             message = NAME_ARTICLE_LENGTH_MESSAGE)
-    private String name;
+    private String nameArticle;
 
     @NotNull(message = DESCRIPTION_NOT_NULL)
     @NotBlank(message = DESCRIPTION_ARTICLE_REQUIRED_MESSAGE)
@@ -51,6 +52,6 @@ public class ArticleRequestDto {
             max = CATEGORY_ID_MAX_LENGTH,
             message = CATEGORY_ID_LENGTH_MESSAGE)
     @UniqueElements(message = CATEGORY_ID_UNIQUE_MESSAGE) // este es un constraint personalizado, que valida que no haya elementos repetidos en la lista
-    private Set<Long> categoryIds;
+    private List<Long> categoryIds;
 
 }

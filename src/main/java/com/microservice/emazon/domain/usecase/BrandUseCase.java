@@ -2,6 +2,7 @@ package com.microservice.emazon.domain.usecase;
 
 import com.microservice.emazon.application.util.ApplicationConstants;
 import com.microservice.emazon.domain.api.IBrandServicePort;
+import com.microservice.emazon.domain.exceptions.BrandExceptions;
 import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 import com.microservice.emazon.domain.model.Brand;
 import com.microservice.emazon.domain.model.Pagination;
@@ -20,8 +21,8 @@ public class BrandUseCase implements IBrandServicePort {
     @Override
     public void saveBrand(Brand brand) {
         ValidationUtil.validateBrand(brand);
-        if (brandPersistencePort.brandExistsByName(brand.getName())) {
-            throw new CategoryExceptions.CategoryNameAlreadyExistsException(ApplicationConstants.CATEGORY_NAME_ALREADY_EXISTS_MESSAGE);
+        if (brandPersistencePort.brandExistsByName(brand.getNameBrand())) {
+            throw new BrandExceptions.BrandNameAlreadyExistsException(ApplicationConstants.BRAND_NAME_ALREADY_EXISTS_MESSAGE);
         }
         brandPersistencePort.saveBrand(brand);
     }
@@ -29,5 +30,13 @@ public class BrandUseCase implements IBrandServicePort {
     @Override
     public Pagination<Brand> getAllBrands(PaginationUtil paginationUtil) {
         return brandPersistencePort.getAllBrands(paginationUtil);
+    }
+
+    @Override
+    public Brand getBrandById(Long brandId) {
+        if (brandId == null) {
+            throw new BrandExceptions.BrandNotFoundException(ApplicationConstants.BRAND_ID_NOT_NULL_MESSAGE);
+        }
+        return brandPersistencePort.getBrandById(brandId);
     }
 }

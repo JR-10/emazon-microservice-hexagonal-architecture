@@ -14,10 +14,10 @@ import java.util.List;
 public class ArticleResponseDto {
 
         private Long id;
-        private String name;
+        private String nameArticle;
         private String description;
         private Long quantity;
         private Long price;
         private BrandResponseDto brand;
-        private List<CategoryResponseDto> categories;
+        private List<CategoryByArticleResponseDto> categories;
 }

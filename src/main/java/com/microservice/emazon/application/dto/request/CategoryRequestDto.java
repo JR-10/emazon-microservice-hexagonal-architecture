@@ -20,7 +20,7 @@ public class CategoryRequestDto {
             min = NAME_MIN_LENGTH,
             max = NAME_MAX_LENGTH,
             message = NAME_CATEGORY_LENGTH_MESSAGE)
-    private String name;
+    private String nameCategory;
 
     @NotNull(message = DESCRIPTION_NOT_NULL)
     @NotBlank(message = DESCRIPTION_CATEGORY_REQUIRED_MESSAGE)

@@ -3,14 +3,13 @@ package com.microservice.emazon.application.dto.response;
 import lombok.*;
 
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class CategoryResponseDto {
+public class CategoryByArticleResponseDto {
 
     private Long id;
     private String nameCategory;
-    private String description;
 
 }

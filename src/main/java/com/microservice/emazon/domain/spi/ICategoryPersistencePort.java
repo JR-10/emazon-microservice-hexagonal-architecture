@@ -26,5 +26,8 @@ public interface ICategoryPersistencePort {
 
     Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil);
 
-    Set<String> getCategoryNamesByIds(Set<Long> ids);
+    List<String> getCategoryNamesByIds(List<Long> ids);
+
+    List<Category> getAllByArticle(Long idArticle);
+
 }
