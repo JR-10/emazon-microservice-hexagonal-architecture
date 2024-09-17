@@ -7,9 +7,7 @@ import com.microservice.emazon.domain.util.PaginationUtil;
 import java.util.List;
 
 
-/*
-* Interface para manejar las operaciones de las categorias en el dominiio
-*/
+
 public interface ICategoryServicePort {
 
     List<Category> getAllCategories();

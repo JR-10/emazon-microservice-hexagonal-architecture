@@ -1,4 +1,3 @@
-// TODO: 3 Tentativo
 package com.microservice.emazon.infrastructure.input.rest.controller;
 
 import com.microservice.emazon.application.dto.request.BrandRequestDto;
@@ -32,7 +31,7 @@ public class BrandController {
             @ApiResponse(responseCode = "201", description = "Brand created", content = @Content),
             @ApiResponse(responseCode = "409", description = "Brand already exists", content = @Content)
     })
-    @PostMapping("/addBrand")
+    @PostMapping()
     public ResponseEntity<String> createBrand(@RequestBody @Valid BrandRequestDto brandRequestDto){
         brandHandler.saveBrand(brandRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_BRAND_MESSAGE + brandRequestDto.getNameBrand());
@@ -45,7 +44,7 @@ public class BrandController {
                     content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = BrandResponseDto.class)))),
             @ApiResponse(responseCode = "404", description = "No data found", content = @Content)
     })
-    @GetMapping("/getAllBrands")
+    @GetMapping()
     public ResponseEntity<Pagination<BrandResponseDto>> getAllBrands(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,

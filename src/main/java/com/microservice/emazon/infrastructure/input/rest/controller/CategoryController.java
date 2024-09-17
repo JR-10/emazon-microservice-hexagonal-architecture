@@ -2,7 +2,6 @@ package com.microservice.emazon.infrastructure.input.rest.controller;
 
 import com.microservice.emazon.application.dto.request.CategoryRequestDto;
 import com.microservice.emazon.application.dto.response.ArticleResponseDto;
-import com.microservice.emazon.application.dto.response.BrandResponseDto;
 import com.microservice.emazon.application.dto.response.CategoryResponseDto;
 import com.microservice.emazon.application.handler.ICategoryHandler;
 import com.microservice.emazon.application.util.ApplicationConstants;
@@ -22,21 +21,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/*
-* Clase para manejar las operaciones de categoría en la capa de controlador
-* */
+
 @RestController
 @RequestMapping("api/v1/category")
 @RequiredArgsConstructor
 public class CategoryController {
 
-    // inyectamos el manejador de categoría
     private final ICategoryHandler categoryHandler;
 
 
-    /*
-    * Metodo para obtener todas las categorías
-    * */
     @Operation(summary = "Get all the categories")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All categories returned",
@@ -49,31 +42,25 @@ public class CategoryController {
     }
 
 
-    /*
-    * Metodo para guardar una categoría
-    * */
     @Operation(summary = "Add a new category")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Category created", content = @Content),
             @ApiResponse(responseCode = "409", description = "Category already exists", content = @Content)
     })
-    @PostMapping("/addCategory")
+    @PostMapping()
     public ResponseEntity<String> createCategory(@RequestBody @Valid CategoryRequestDto categoryRequestDto) {
         categoryHandler.saveCategory(categoryRequestDto);
         return  ResponseEntity.status(HttpStatus.CREATED).body(ApplicationConstants.SUCCESS_CREATED_CATEGORY_MESSAGE + categoryRequestDto.getNameCategory());
     }
 
 
-    /*
-    * Metodo para obtener las categorías paginadas
-    * */
     @Operation(summary = "Get all the articles")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All articles returned",
                     content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ArticleResponseDto.class)))),
             @ApiResponse(responseCode = "404", description = "No data found", content = @Content)
     })
-    @GetMapping("/getAllCategoriesPagination")
+    @GetMapping()
     public ResponseEntity<Pagination<CategoryResponseDto>> getPagination(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,

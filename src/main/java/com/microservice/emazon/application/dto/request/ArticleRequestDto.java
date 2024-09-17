@@ -1,5 +1,6 @@
 package com.microservice.emazon.application.dto.request;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -38,8 +39,10 @@ public class ArticleRequestDto {
     private String description;
 
     @NotNull(message = QUANTITY_ARTICLE_REQUIRED_MESSAGE)
+    @Min(value = VALUE_ZERO, message = QUANTITY_ARTICLE_NEGATIVE_MESSAGE)
     private Long quantity;
 
+    @Min(value = VALUE_ZERO, message =  PRICE_ARTICLE_NEGATIVE_MESSAGE)
     @NotNull(message = PRICE_ARTICLE_REQUIRED_MESSAGE)
     private Long price;
 
@@ -51,7 +54,7 @@ public class ArticleRequestDto {
             min = CATEGORY_ID_MIN_LENGTH,
             max = CATEGORY_ID_MAX_LENGTH,
             message = CATEGORY_ID_LENGTH_MESSAGE)
-    @UniqueElements(message = CATEGORY_ID_UNIQUE_MESSAGE) // este es un constraint personalizado, que valida que no haya elementos repetidos en la lista
+    @UniqueElements(message = CATEGORY_ID_UNIQUE_MESSAGE)
     private List<Long> categoryIds;
 
 }

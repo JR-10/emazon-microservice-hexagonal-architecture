@@ -12,13 +12,10 @@ import com.microservice.emazon.domain.api.ICategoryServicePort;
 import com.microservice.emazon.domain.model.Article;
 import com.microservice.emazon.domain.model.Pagination;
 import com.microservice.emazon.domain.util.PaginationUtil;
-import com.microservice.emazon.infrastructure.output.mapper.IArticleEntityMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,16 +41,16 @@ public class ArticleHandler implements IArticleHandler {
     @Override
     public Pagination<ArticleResponseDto> getArticlesByParameters(PaginationUtil paginationUtil) {
 
-        Pagination<Article> articlePagination = articleServicePort.getArticlesByParameters(paginationUtil); // se obtiene la paginacion de articulos de la capa de dominio
-        List<Article> articlesData = articlePagination.getData(); // se obtiene la lista de articulos de la paginacion
-        List<ArticleResponseDto> articlesResponses = articlesData.stream().map( // se mapea la lista de articulos de dominio a la lista de articulos de respuesta
+        Pagination<Article> articlePagination = articleServicePort.getArticlesByParameters(paginationUtil);
+        List<Article> articlesData = articlePagination.getData();
+        List<ArticleResponseDto> articlesResponses = articlesData.stream().map(
                 article -> {
-                    ArticleResponseDto articleResponse = articleMapper.articleToArticleDto(article); // se mapea el articulo de dominio a articulo de respuesta
-                    articleResponse.setBrand(brandMapper.brandToBrandDto(branServicePort.getBrandById(article.getBrandId()))); // se mapea la marca de dominio a marca de respuesta
-                    articleResponse.setCategories(categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByArticle(article.getId()))); // se mapea la lista de categorias de dominio a la lista de categorias de respuesta
-                    return articleResponse; // retorna el articulo de respuesta mapeado
+                    ArticleResponseDto articleResponse = articleMapper.articleToArticleDto(article);
+                    articleResponse.setBrand(brandMapper.brandToBrandDto(branServicePort.getBrandById(article.getBrandId())));
+                    articleResponse.setCategories(categoryMapper.categoryListToCategoryByArticleDtoList(categoryServicePort.getAllByArticle(article.getId())));
+                    return articleResponse;
                 }
-        ).toList(); // se convierte el stream a lista
+        ).toList();
 
         return new Pagination<>(
                 articlePagination.isAscending(),

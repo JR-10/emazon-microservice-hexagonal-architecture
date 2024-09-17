@@ -29,7 +29,7 @@ public class ArticleController {
             @ApiResponse(responseCode = "201", description = "Article created", content = @Content),
             @ApiResponse(responseCode = "409", description = "Article already exists", content = @Content)
     })
-    @PostMapping("/addArticle")
+    @PostMapping()
     public ResponseEntity<String> saveArticle(@RequestBody @Valid ArticleRequestDto articleRequestDto ) {
         articleHandler.saveArticle(articleRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(
@@ -38,7 +38,7 @@ public class ArticleController {
     }
 
 
-    @GetMapping("/getArticlesByParameters")
+    @GetMapping()
     public ResponseEntity<Pagination<ArticleResponseDto>> getArticlesByParameters(
             @RequestParam(defaultValue = "0", required = false) int pageNumber,
             @RequestParam(defaultValue = "5", required = false) int pageSize,

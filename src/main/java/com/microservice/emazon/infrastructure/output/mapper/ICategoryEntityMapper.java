@@ -3,7 +3,6 @@ package com.microservice.emazon.infrastructure.output.mapper;
 import com.microservice.emazon.domain.model.Category;
 import com.microservice.emazon.infrastructure.output.entity.CategoryEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 

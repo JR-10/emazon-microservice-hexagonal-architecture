@@ -2,7 +2,7 @@ package com.microservice.emazon.domain.model;
 
 import java.util.List;
 
-public class Pagination<T> {
+public class    Pagination<T> {
 
     private List<T> data;
     private Long totalElements;
