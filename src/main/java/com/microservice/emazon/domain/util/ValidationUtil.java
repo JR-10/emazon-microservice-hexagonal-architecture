@@ -55,5 +55,11 @@ public class ValidationUtil {
         if (article.getDescription().length() > ApplicationConstants.DESCRIPTION_ARTICLE_MAX_LENGTH) {
             throw new IllegalArgumentException(ApplicationConstants.DESCRIPTION_ARTICLE_LENGTH_MESSAGE);
         }
+        if (article.getQuantity() < ApplicationConstants.VALUE_ZERO) {
+            throw new IllegalArgumentException(ApplicationConstants.QUANTITY_ARTICLE_NEGATIVE_MESSAGE);
+        }
+        if (article.getPrice() < ApplicationConstants.VALUE_ZERO) {
+            throw new IllegalArgumentException(ApplicationConstants.PRICE_ARTICLE_NEGATIVE_MESSAGE);
+        }
     }
 }

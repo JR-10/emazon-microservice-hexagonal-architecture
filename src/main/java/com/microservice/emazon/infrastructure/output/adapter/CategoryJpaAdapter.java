@@ -15,13 +15,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 
-/*
-* Clase que implementa el puerto de persistencia de categorias
-* */
+
 @RequiredArgsConstructor
 @Component
 public class CategoryJpaAdapter  implements ICategoryPersistencePort {
@@ -29,9 +26,7 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     private final ICategoryEntityMapper categoryEntityMapper;
     private final ICategoryRepository categoryRepository;
 
-    /*
-    * Metodo que obtiene todas las categorias de la base de datos para mostrarlas
-    * */
+
     @Override
     public List<Category> getAllCategories() {
         List<CategoryEntity> categoryEntityList = categoryRepository.findAll();
@@ -43,34 +38,25 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
         return Optional.empty();
     }
 
-    /*
-    * Metodo que guarda una categoria en la base de datos
-    * */
+
     @Override
     public void saveCategory(Category category) {
         categoryRepository.save(categoryEntityMapper.categoryEntityToCategory(category));
     }
 
-    /*
-    * Metodo que verifica si existe una categoria por nombre en la base de datos
-    * */
     @Override
     public boolean categoryExistsByName(String categoryName) {
         return categoryRepository.findByNameCategory(categoryName).isPresent();
     }
 
 
-    /*
-    * Metodo que obtiene todas las categorias con paginacion y ordenamiento por nombre de forma ascendente o descendente
-    * */
     @Override
     public Pagination<Category> getAllCategoriesPagination(PaginationUtil paginationUtil) {
-        Sort.Direction sortDirection = paginationUtil.isAscending()? Sort.Direction.ASC : Sort.Direction.DESC; // propiedad de jpa que indica si el ordenamiento es ascendente o descendente
-        PageRequest pageRequest = PageRequest.of(paginationUtil.getPageNumber(), paginationUtil.getPageSize(), Sort.by(sortDirection, paginationUtil.getNameFilter())); // objeto de jpa que contiene la informacion de la paginacion y ordenamiento
-        Page<CategoryEntity> categoryPage = categoryRepository.findAll(pageRequest); // consulta a la base de datos con la paginacion y ordenamiento y almacena los resultados en un objeto de tipo Page
-        List<Category> categories = categoryEntityMapper.toCategoryList(categoryPage.getContent()); // mapeo de las categorias obtenidas de la base de datos a una lista de categorias de tipo Category de dominio
+        Sort.Direction sortDirection = paginationUtil.isAscending()? Sort.Direction.ASC : Sort.Direction.DESC;
+        PageRequest pageRequest = PageRequest.of(paginationUtil.getPageNumber(), paginationUtil.getPageSize(), Sort.by(sortDirection, paginationUtil.getNameFilter()));
+        Page<CategoryEntity> categoryPage = categoryRepository.findAll(pageRequest);
+        List<Category> categories = categoryEntityMapper.toCategoryList(categoryPage.getContent());
 
-        // se retorna un objeto de tipo Pagination que contiene la informacion de la paginacion y ordenamiento
         return new Pagination<>(
                 paginationUtil.isAscending(),
                 paginationUtil.getPageNumber(),
@@ -81,9 +67,6 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
     }
 
 
-    /*
-    * Metodo que obtiene los nombres de las categorias por medio de los ids de las categorias
-    * */
     @Override
     public List<String> getCategoryNamesByIds(List<Long> ids) {
         return categoryRepository.findAllById(ids).stream()
@@ -91,12 +74,10 @@ public class CategoryJpaAdapter  implements ICategoryPersistencePort {
                 .collect(Collectors.toList());
     }
 
-    /*
-    * Metodo que obtiene todas las categorias por medio del id del articulo
-    * */
+
     @Override
     public List<Category> getAllByArticle(Long idArticle) {
-        List<CategoryEntity> categories = categoryRepository.findCategoriesByArticleId(idArticle); // se obtienen las categorias por medio del id del articulo desde la base de datos
-        return categoryEntityMapper.toCategoryList(categories); // se mapean las categorias obtenidas a una lista de categorias de tipo Category de dominio
+        List<CategoryEntity> categories = categoryRepository.findCategoriesByArticleId(idArticle);
+        return categoryEntityMapper.toCategoryList(categories);
     }
 }

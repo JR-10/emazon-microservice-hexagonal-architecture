@@ -1,10 +1,9 @@
 package com.microservice.emazon.application.util;
 
-/*
-* Clase que contiene las constantes de la aplicacion
-*/
+
 public class ApplicationConstants {
 
+    public static final int VALUE_ZERO = 0;
     public static final int NAME_MIN_LENGTH = 3;
     public static final int NAME_MAX_LENGTH = 50;
     public static final int DESCRIPTION_MIN_LENGTH = 10;
@@ -41,6 +40,9 @@ public class ApplicationConstants {
     public static final String DESCRIPTION_ARTICLE_REQUIRED_MESSAGE = "Article description is required";
     public static final int DESCRIPTION_ARTICLE_MAX_LENGTH = 120;
     public static final String DESCRIPTION_ARTICLE_LENGTH_MESSAGE = "The article description must be between " + DESCRIPTION_MIN_LENGTH + " and "+DESCRIPTION_BRAND_MAX_LENGTH+" characters";
+
+    public static final String QUANTITY_ARTICLE_NEGATIVE_MESSAGE = "The amount cannot be negative";
+    public static final String PRICE_ARTICLE_NEGATIVE_MESSAGE = "The price cannot be negative";
 
     public static final String QUANTITY_ARTICLE_REQUIRED_MESSAGE = "Article quantity is required";
     public static final String PRICE_ARTICLE_REQUIRED_MESSAGE = "Article price is required";

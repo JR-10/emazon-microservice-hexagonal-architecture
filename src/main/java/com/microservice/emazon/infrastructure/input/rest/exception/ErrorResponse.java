@@ -1,8 +1,6 @@
 package com.microservice.emazon.infrastructure.input.rest.exception;
 
-/*
-* Clase que representa la estructura de un mensaje de error
-* */
+
 public class ErrorResponse {
 
         private int status;

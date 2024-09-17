@@ -12,17 +12,11 @@ import com.microservice.emazon.domain.exceptions.CategoryExceptions;
 
 import java.util.List;
 
-/*
-* Clase que tiene la logica e implementa la interfaz de los puertos de servicio de categorias
-* */
+
 public class CategoryUseCase  implements ICategoryServicePort {
 
-    // Inyeccion de dependencias
     private final ICategoryPersistencePort categoryPersistencePort;
 
-    /*
-    * Constructor que inyecta la dependencia de la persistencia de categorias
-    * */
     public CategoryUseCase(ICategoryPersistencePort categoryPersistencePort) {
         this.categoryPersistencePort = categoryPersistencePort;
     }
